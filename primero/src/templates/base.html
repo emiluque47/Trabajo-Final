@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>este es el título</title>
-	{% if request.user.is_authenticated %}
-		<p>Hello {{reuqest.user.username}} | <a href="{% url 'logout' %}">Logout</a></p>
-	{% else %}
-		<p><a href="{% url 'logout' %}">Register | </a><a href="{% url '#' %}">Login</a></p>
-	{% endif %}
-	<hr>
+	
+	{% include 'snippets/header.html' %}
 </head>
 <body>
-	{% block content %}
-	{% endblock content %}
+	<!-- ---------------------------Start Body -->
+	<style type="text/css">
+		.main{
+			min-height: 100vh;
+			height: 100%;
+		}
+	</style>
+	<div class="main">
+		{% block content %}
+		{% endblock content %}	
+	</div>
+	
+	<!-- ---------------------------End Body -->
+	{% include 'snippets/footer.html' %}
+
 </body>
-<footer>
-	<hr>
-	<p>este es el footer</p>
-</footer>
 </html>
