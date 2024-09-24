@@ -4,12 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>este es el título</title>
-	<h1>este es el header</h1>
+	{% if request.user.is_authenticated %}
+		<p>Hello {{reuqest.user.username}} | <a href="{% url 'logout' %}">Logout</a></p>
+	{% else %}
+		<p><a href="{% url 'logout' %}">Register | </a><a href="{% url '#' %}">Login</a></p>
+	{% endif %}
+	<hr>
 </head>
 <body>
-	<h1>este es el body</h1>
+	{% block content %}
+	{% endblock content %}
 </body>
 <footer>
-	<h3>este es el footer</h3>
+	<hr>
+	<p>este es el footer</p>
 </footer>
 </html>

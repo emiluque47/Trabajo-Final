@@ -1,5 +1,9 @@
 from django.shortcuts import render
-
+from account.models import Account
 # Create your views here.
+
 def home_screen_view(request):
-	return render(request,"base.html",{})
+	context = {}
+	accounts= Account.objects.all()
+	context['accounts'] = accounts
+	return render (request, "personal/home.html", context)
