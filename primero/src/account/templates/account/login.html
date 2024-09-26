@@ -29,7 +29,7 @@
 <main class="form-signin w-100 m-auto">
   <form method="post">
     {% csrf_token %}
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
 	<input type="email" name="email" class="form-control" id="floatingInput" placeholder="correo@ejemplo.com">
   	<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="contraseña" required>
 	{% for field in login_form %}
@@ -43,8 +43,11 @@
 		</div>
 	{% endif %}
     <p></p>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-primary w-100 py-2" type="submit">Iniciar sesión</button>
   </form>
+  <div class="d-flex d-column">
+  	<a class="m-auto" href="{% url 'password_reset' %}">Olvidé mi contraseña</a>
+  </div> 
 </main>
 {% endblock content %}
 

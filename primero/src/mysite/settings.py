@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#----------------------------------------esto es para el reseteo de password
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #para el ejemplo de desarrollo
 
 # Application definition
 

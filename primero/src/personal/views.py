@@ -7,3 +7,9 @@ def home_screen_view(request):
 	accounts= Account.objects.all()
 	context['accounts'] = accounts
 	return render (request, "personal/home.html", context)
+
+def team_main_view(request):
+	return render (request,"equipo/equipo_main.html",{})
+
+def team_single_view(request):
+	return render (request,"equipo/equipo_single.html",{})

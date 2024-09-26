@@ -30,26 +30,29 @@
 <main class="form-signin w-100 m-auto">
   <form method="post">
     {% csrf_token %}
-    <h1 class="h3 mb-3 fw-normal">Account</h1>
-	<input type="email" name="email" class="form-control" id="floatingInput" placeholder="correo@ejemplo.com" value="{{account_form.intial.email}}">
-  	<input type="text" name="username" class="form-control" id="inputUsername" placeholder="contraseña" required value="{{account_form.intial.username}}">
-	{% for field in account_form %}
-		{% for error in field.errors %}
-			<p style="color: red;">{{error}}</p>
-		}
+    <h1 class="h3 mb-3 fw-normal">Cuenta</h1>
+		<input type="email" name="email" class="form-control" id="floatingInput" placeholder="correo@ejemplo.com" value="{{account_form.initial.email}}">
+  	<input type="text" name="username" class="form-control" id="inputUsername" placeholder="contraseña" required value="{{account_form.initial.username}}">
+		{% for field in account_form %}
+			{% for error in field.errors %}
+				<p style="color: red;">{{error}}</p>
+			}
+			{% endfor %}
 		{% endfor %}
-	{% endfor %}
-	{% if account_form.non_field_errors %}
-		<div style="color:red;">
-			<p>{{account_form.non_field_errors}}</p>
-		</div>
-	{% endif %}
-	{% if success_message %}
-		<p style="color:green; text-align:center;">{{success_message}}</p>
-	{% endif %}
+		{% if account_form.non_field_errors %}
+			<div style="color:red;">
+				<p>{{account_form.non_field_errors}}</p>
+			</div>
+		{% endif %}
+		{% if success_message %}
+			<p style="color:green; text-align:center;">{{success_message}}</p>
+		{% endif %}
     <p></p>
     <button class="btn btn-primary w-100 py-2" type="submit">Guardar Cambios</button>
   </form>
+  <div class="d-flex d-column">
+  	<a class="m-auto" href="{% url 'password_change' %}">Cambiar Contraseña</a>
+  </div>
 </main>
 <!--
 <h2>Account</h2>
