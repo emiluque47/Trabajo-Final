@@ -12,4 +12,4 @@ def team_main_view(request):
 	return render (request,"equipo/equipo_main.html",{})
 
 def team_single_view(request):
-	return render (request,"equipo/equipo_single.html",{})
+	return render (request,"equipo/equipo_single_1.html",{})

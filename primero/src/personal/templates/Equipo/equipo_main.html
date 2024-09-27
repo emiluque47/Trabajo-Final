@@ -1,26 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Three columns of text below the carousel -->
-<div class="row p-5 d-flex justify-content-center align-items-center align-self-center">
-  <div class="col-lg-4  text-center align-middle px-4">
-    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-    <h2 class="fw-normal">Miembro del Equipo 1</h2>
-    <p>Breve descripción de la persona.</p>
-    <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4 text-center align-middle px-4">
-    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-    <h2 class="fw-normal">Miembro del Equipo 2</h2>
-    <p>Breve descripción de la persona.</p>
-    <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4 text-center align-middle px-4">
-    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-    <h2 class="fw-normal">Miembro del Equipo 3</h2>
-    <p>Breve descripción de la persona.</p>
-    <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
+<div class="col-lg-8">
+  <!-- Three columns of text below the carousel -->
+  <div class="row p-5 d-flex justify-content-center align-items-center align-self-center">
+    <div class="col-lg-4  text-center align-middle px-4">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+      <h2 class="fw-normal">Miembro del Equipo 1</h2>
+      <p>Breve descripción de la persona.</p>
+      <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center align-middle px-4">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+      <h2 class="fw-normal">Miembro del Equipo 2</h2>
+      <p>Breve descripción de la persona.</p>
+      <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center align-middle px-4">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+      <h2 class="fw-normal">Miembro del Equipo 3</h2>
+      <p>Breve descripción de la persona.</p>
+      <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div>
+  <!-- /.row -->
+  <!-- Segunda fila con 2 personas -->
+  <div class="row p-5 d-flex justify-content-center align-items-center align-self-center order-md-2">
+    <div class="col-lg-4  text-center align-middle px-4">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+      <h2 class="fw-normal">Miembro del Equipo 4</h2>
+      <p>Breve descripción de la persona.</p>
+      <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center align-middle px-4">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+      <h2 class="fw-normal">Miembro del Equipo 5</h2>
+      <p>Breve descripción de la persona.</p>
+      <p><a class="btn btn-secondary" href="{% url 'team_single' %}">Ver más &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div>
+  <!-- /.row -->
 </div>
-<!-- /.row -->
 {% endblock content %}
