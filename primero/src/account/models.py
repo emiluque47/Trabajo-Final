@@ -36,7 +36,8 @@ class Account(AbstractBaseUser):
 	is_active				= models.BooleanField(default=True)
 	is_staff				= models.BooleanField(default=False)
 	is_superuser			= models.BooleanField(default=False)
-	user_class				= models.IntegerField(verbose_name="userclass", default='1')
+	is_doctor				= models.BooleanField(default=False)
+	is_investigador			= models.BooleanField(default=True)
 
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username']
@@ -49,3 +50,5 @@ class Account(AbstractBaseUser):
 		return self.is_admin
 	def has_module_perms(self, app_label):
 		return True
+	def return_username(self):
+		return self.username

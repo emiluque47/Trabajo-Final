@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form-signin w-100 m-auto">
+	<form method="POST">
+		{% csrf_token %}
+		<h1 class="h3 mb-3 fw-normal">Cargar Paciente</h1>
+		<!--
+		<input type="text" name="medico" class="form-control" id="disabledInput" value="{{ request.user.username }}" disabled required>
+-->
+		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+		<input type="text" name="alias" placeholder="Alias" class="form-control" id="floatingInput"  required>
+		<input type="text" name="sexo" placeholder="Sexo" class="form-control" id="floatingInput" required>
+<!-- 		{% for field in form %}
+			{{field.name}}
+			{{field}}
+		{% endfor %} -->
+
+		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Paciente</button>
+	</form>
+</main>
+
+{% endblock content %}

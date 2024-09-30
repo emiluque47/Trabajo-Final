@@ -20,23 +20,39 @@
 <div class="d-flex flex-column flex-md-row align-items-center pb-0 mb-0 " style="background-color: #212529;">
   <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
 	<span class="fs-4 text-white px-2">
-		{% if request.user.is_authenticated %}
-	    	<p>Hola {{request.user.username}}</p>
-	    {% endif %}
+		{% if request.user.is_authenticated %} <!-- acá pregunto si está autenticado -->
+  		<p>Hola {{request.user.username}}</p>
+    {% endif %}
 	</span>
   </a>
 
   <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-  	{% if request.user.is_authenticated %}
-  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
-  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'account' %}">Account</a>
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
-    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'register' %}">Register</a>
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'login' %}">Login</a>
+  	{% if request.user.is_authenticated %} <!-- acá pregunto si está autenticado -->
+	  	{% if request.user.is_admin %}<!-- es admin? -->
+	  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
+	  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'register' %}">Register</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'account' %}">Account</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
+	    {% elif request.user.is_doctor %} <!-- es doctor? -->
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-success fw-bold" href="{% url 'carga_paciente' %}">Cargar Pacientes</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'listado_paciente' %}">Listar Pacientes</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
+	    {% elif request.user.is_investigador %} <!-- es investigador? -->
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="#">Mensajes</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
+	    {% endif %}
+    {% else %} <!-- si no está autenticado, muestro eso -->
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'login' %}">Login</a>
     {% endif %}
   </nav>
 </div>

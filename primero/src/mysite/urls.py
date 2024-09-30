@@ -31,6 +31,10 @@ from account.views import(
     login_view,
     account_view,
     )
+from pacientes.views import(
+    paciente_carga_view,
+    listado_pacientes_view,
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,6 +45,8 @@ urlpatterns = [
     path('account/', account_view, name="account"),
     path('team_main/', team_main_view, name="team_main"),
     path('team_single/', team_single_view, name="team_single"),
+    path('paciente_carga/', paciente_carga_view, name="carga_paciente"),
+    path('listado_pacientes/', listado_pacientes_view, name="listado_paciente"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), 
         name='password_change_done'),
