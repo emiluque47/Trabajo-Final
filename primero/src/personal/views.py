@@ -13,3 +13,15 @@ def team_main_view(request):
 
 def team_single_view(request):
 	return render (request,"equipo/equipo_single_1.html",{})
+
+def team_single_view_2(request):
+	return render (request,"equipo/equipo_single_2.html",{})
+
+def team_single_view_3(request):
+	return render (request,"equipo/equipo_single_3.html",{})
+
+def team_single_view_4(request):
+	return render (request,"equipo/equipo_single_4.html",{})
+
+def team_single_view_5(request):
+	return render (request,"equipo/equipo_single_5.html",{})

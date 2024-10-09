@@ -24,6 +24,10 @@ from personal.views import(
     home_screen_view,
     team_main_view,
     team_single_view,
+    team_single_view_2,
+    team_single_view_3,
+    team_single_view_4,
+    team_single_view_5,
     )
 from account.views import(
     registration_view,
@@ -35,6 +39,9 @@ from pacientes.views import(
     paciente_carga_view,
     listado_pacientes_view,
     )
+from contacto.views import(
+    contacto_view,
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,8 +50,13 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('login/', login_view, name="login"),
     path('account/', account_view, name="account"),
+    path('contacto/', contacto_view, name="contacto"),
     path('team_main/', team_main_view, name="team_main"),
     path('team_single/', team_single_view, name="team_single"),
+    path('team_single_2/', team_single_view_2, name="team_single_2"),
+    path('team_single_3/', team_single_view_3, name="team_single_3"),
+    path('team_single_4/', team_single_view_4, name="team_single_4"),
+    path('team_single_5/', team_single_view_5, name="team_single_5"),
     path('paciente_carga/', paciente_carga_view, name="carga_paciente"),
     path('listado_pacientes/', listado_pacientes_view, name="listado_paciente"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)

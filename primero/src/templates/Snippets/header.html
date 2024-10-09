@@ -39,19 +39,19 @@
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'listado_paciente' %}">Listar Pacientes</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
-				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
 	    {% elif request.user.is_investigador %} <!-- es investigador? -->
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="#">Mensajes</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
-				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
 	    {% endif %}
     {% else %} <!-- si no está autenticado, muestro eso -->
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
-				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="#">Contacto</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'login' %}">Login</a>
     {% endif %}
   </nav>
