@@ -12,8 +12,8 @@ def paciente_carga_view(request):
 		print("if pre valid")
 		form = CargaPaciente(request.POST)
 		if form.is_valid():
-			print("exito!")
 			form.save()
+			print("yaaaay")
 			context['success_message'] ="Paciente Cargado!"
 	context = {'form':form}
 	return render(request, 'pacientes/carga_paciente.html', context)

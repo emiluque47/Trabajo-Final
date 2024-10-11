@@ -19,20 +19,38 @@
 	text-align: center;
 }
 </style>
-
-<div class="col-lg-8 p-5 d-flex justify-content-center align-items-center align-self-center">
-	
-	<div class="column p-3" style="border: 1px solid black">
-		{% for paciente in listapacientes %}
-			<p class="lead" >{{paciente.alias}}</p>
-		{% endfor %}
-	</div>
-	<div class="column p-3" style="border: 1px solid black">
-		{% for paciente in listapacientes %}
-			<p class="lead">{{paciente.sexo}}</p>
-		{% endfor %}
-	</div>
-	
+<div class="table-responsive small">
+	<table class="table table-striped table-sm">
+		<thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Alias</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Peso (Kg.)</th>
+        <th scope="col">Altura (Cm.)</th>
+        <th scope="col">Más Información</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for paciente in listapacientes %}
+    	<tr>
+				<td class="text-center align-middle">{{paciente.id}}</td>
+				<td class="text-center align-middle">{{paciente.alias}}</td>
+				<td class="text-center align-middle">{{paciente.sexo}}</td>
+				<td class="text-center align-middle">{{paciente.nacimiento}}</td>
+				<td class="text-center align-middle">{{paciente.edad}}</td>
+				<td class="text-center align-middle">{{paciente.peso}}</td>
+				<td class="text-center align-middle">{{paciente.altura}}</td>
+				<td class="text-center align-middle">
+					<a href="{% url 'home' %}">Más</a>
+				</td>
+    	</tr>
+    	{% endfor %}
+    </tbody>
+	</table>
 </div>
+
 
 {% endblock content %}

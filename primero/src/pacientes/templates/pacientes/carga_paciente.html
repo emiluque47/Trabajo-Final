@@ -15,6 +15,16 @@
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .h3{
 	text-align: center;
 }
@@ -27,8 +37,12 @@
 		<input type="text" name="medico" class="form-control" id="disabledInput" value="{{ request.user.username }}" disabled required>
 -->
 		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
-		<input type="text" name="alias" placeholder="Alias" class="form-control" id="floatingInput"  required>
+		<input type="text" name="alias" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
 		<input type="text" name="sexo" placeholder="Sexo" class="form-control" id="floatingInput" required>
+		<input type="date" name="nacimiento" placeholder="Fecha de Nacimiento" class="form-control" id="floatingInput" required>
+		<input type="number" name="edad" placeholder="Edad" class="form-control" id="floatingInput" required>
+		<input type="number" name="peso" placeholder="Peso" class="form-control" id="floatingInput" required>
+		<input type="number" name="altura" placeholder="Altura (cm)" class="form-control" id="floatingInput" required>
 <!-- 		{% for field in form %}
 			{{field.name}}
 			{{field}}
