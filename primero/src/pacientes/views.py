@@ -25,3 +25,10 @@ def listado_pacientes_view(request):
 	listapacientes = Paciente.objects.all().filter(medico=user)
 	context['listapacientes']=listapacientes
 	return render(request, 'pacientes/lista_paciente.html',context)
+
+def datos_paciente_view(request):
+	user = request.user.username
+	context = {}
+	listapacientes = Paciente.objects.all().filter(medico=user)
+	context['listapacientes']=listapacientes
+	return render(request, 'pacientes/datos_paciente.html',context)

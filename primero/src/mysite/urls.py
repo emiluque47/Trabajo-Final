@@ -38,12 +38,14 @@ from account.views import(
 from pacientes.views import(
     paciente_carga_view,
     listado_pacientes_view,
+    datos_paciente_view,
     )
 from contacto.views import(
     contacto_view,
     )
 
 urlpatterns = [
+    #generales
     path('admin/', admin.site.urls),
     path('', home_screen_view, name="home"),
     path('register/', registration_view, name="register"),
@@ -51,14 +53,17 @@ urlpatterns = [
     path('login/', login_view, name="login"),
     path('account/', account_view, name="account"),
     path('contacto/', contacto_view, name="contacto"),
+    # equipo
     path('team_main/', team_main_view, name="team_main"),
     path('team_single/', team_single_view, name="team_single"),
     path('team_single_2/', team_single_view_2, name="team_single_2"),
     path('team_single_3/', team_single_view_3, name="team_single_3"),
     path('team_single_4/', team_single_view_4, name="team_single_4"),
     path('team_single_5/', team_single_view_5, name="team_single_5"),
+    # paciente
     path('paciente_carga/', paciente_carga_view, name="carga_paciente"),
     path('listado_pacientes/', listado_pacientes_view, name="listado_paciente"),
+    path('datos_paciente/', datos_paciente_view, name="datos_paciente"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), 
         name='password_change_done'),

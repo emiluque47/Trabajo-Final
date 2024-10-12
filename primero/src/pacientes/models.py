@@ -14,3 +14,4 @@ class Paciente(models.Model):
 	
 	def __str__(self):
 		return self.alias + self.sexo + self.medico
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="select"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form-signin w-100 m-auto">
+	<form method="POST">
+		{% csrf_token %}
+		<h1 class="h3 mb-3 fw-normal">Seleccionar Paciente</h1>
+		<select type="select" name="alias" class="form-control" id="floatingInput" required>
+		{% for paciente in listapacientes %}
+			<option value="{{paciente.id}}">{{paciente.alias}}</option>
+		{% endfor %}
+		</select>
+		<button class="btn btn-primary w-100 py-2"  type="submit">Continuar</button>
+	</form>
+</main>
+
+{% endblock content %}
