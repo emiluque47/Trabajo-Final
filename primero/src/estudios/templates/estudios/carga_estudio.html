@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form-signin w-100 m-auto">
+	<form method="POST">
+		{% csrf_token %}
+		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
+		<!-- id médico -->
+		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+		<!-- id paciente-->
+		<label>Paciente</label>
+		<select style="margin-bottom: 10px;" type="text" name="aliaspaciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
+			{% for paciente in listapacientes %}
+			<option value="{{paciente.alias}}">{{paciente.alias}}</option>
+			{% endfor %}
+		</select>
+		<!-- tipos de estudio -->
+		<label>Tipo de Estudio</label>
+		<select style="margin-bottom: 10px;" type="text" name="tipoestudio" placeholder="Tipo de Estudio" class="form-control" id="floatingInput"  required>
+			<option value="1">Análisis de sangre</option>
+			<option value="2">Biopsia</option>
+			<option value="3">Resonancia Magnética</option>
+		</select>
+		<!-- cargar archivos -->
+		<label>Cargar PDF</label>
+		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+		  <button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Archivo PDF</button>
+	    <input type='file' id="getFile" style="display:none" required>
+		</div>
+		<label>Cargar Imagen (Opcional)</label>
+		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+		  <button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Imagen</button>
+	    <input type='file' id="getFile" accept="image/*" style="display:none">
+		</div>
+	<!--
+		<input type="text" name="aliaspaciente" placeholder="Alias paciente" class="form-control" id="floatingInput" required>
+	
+		<input type="text" name="campo1" placeholder="Campo 1" class="form-control" id="floatingInput" required>
+		<input type="number" name="campo2" placeholder="Campo 2" class="form-control" id="floatingInput" required>
+		<input type="number" name="campo3" placeholder="Campo 3" class="form-control" id="floatingInput" required>
+	-->
+		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Estudio</button>
+	</form>
+</main>
+
+{% endblock content %}

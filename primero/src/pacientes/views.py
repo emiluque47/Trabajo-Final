@@ -13,8 +13,8 @@ def paciente_carga_view(request):
 		form = CargaPaciente(request.POST)
 		if form.is_valid():
 			form.save()
-			print("yaaaay")
-			context['success_message'] ="Paciente Cargado!"
+			context['exito'] ="Paciente Cargado!"
+			print(context['exito'])
 	context = {'form':form}
 	return render(request, 'pacientes/carga_paciente.html', context)
 

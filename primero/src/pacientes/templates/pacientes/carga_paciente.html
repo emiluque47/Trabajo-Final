@@ -47,6 +47,9 @@
 			{{field.name}}
 			{{field}}
 		{% endfor %} -->
+		{% if exito %}
+			<p style="color:green; text-align:center;">{{exito}}</p>
+		{% endif %}
 
 		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Paciente</button>
 	</form>

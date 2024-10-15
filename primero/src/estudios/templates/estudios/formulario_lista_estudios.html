@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form-signin w-100 m-auto">
+	<form method="POST">
+		{% csrf_token %}
+		<h1 class="h3 mb-3 fw-normal">Listado de Estudios</h1>
+		<!-- id médico -->
+		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+		<!-- id paciente-->
+		<label>Elija un paciente</label>
+		<select style="margin-bottom: 10px;" type="text" name="aliaspaciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
+			{% for paciente in listapacientes %}
+			<option value="{{paciente.alias}}">{{paciente.alias}}</option>
+			{% endfor %}
+		</select>
+	<!--
+		<input type="text" name="aliaspaciente" placeholder="Alias paciente" class="form-control" id="floatingInput" required>
+	
+		<input type="text" name="campo1" placeholder="Campo 1" class="form-control" id="floatingInput" required>
+		<input type="number" name="campo2" placeholder="Campo 2" class="form-control" id="floatingInput" required>
+		<input type="number" name="campo3" placeholder="Campo 3" class="form-control" id="floatingInput" required>
+	-->
+		<button class="btn btn-primary w-100 py-2"  type="submit">Buscar Estudios</button>
+	</form>
+</main>
+
+{% endblock content %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'pacientes',
     'contacto',
+    'estudios',
 #
     'django.contrib.admin',
     'django.contrib.auth',
