@@ -33,42 +33,40 @@
 	<form method="POST">
 		{% csrf_token %}
 		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
-		<!-- id médico -->
-		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
-		<!-- id paciente-->
-		<label>Paciente</label>
-		<select style="margin-bottom: 10px;" type="text" name="aliaspaciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
+		<!-- esto es medico -->
+		<input type="hidden" name="medico" placeholder="srqerqer" class="form-control" id="floatingInput" value="{{ user.username }}" required>
+		<!-- esto es paciente -->
+		<label>Elija un Paciente</label>
+		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
 			{% for paciente in listapacientes %}
 			<option value="{{paciente.alias}}">{{paciente.alias}}</option>
 			{% endfor %}
 		</select>
-		<!-- tipos de estudio -->
-		<label>Tipo de Estudio</label>
-		<select style="margin-bottom: 10px;" type="text" name="tipoestudio" placeholder="Tipo de Estudio" class="form-control" id="floatingInput"  required>
-			<option value="1">Análisis de sangre</option>
-			<option value="2">Biopsia</option>
-			<option value="3">Resonancia Magnética</option>
+		<!-- esto es tipo de estudio -->
+		<label>Elija un Tipo de Estudio</label>
+		<select style="margin-bottom: 10px;" name="tipoEstudio" class="form-control" id="floatingInput" required>
+		  <option value="Biopsia">Biopsia</option>
+		  <option value="Sangre">Análisis de Sangre</option>
+		  <option value="Resonancia">Resonancia Magnetica</option>
 		</select>
-		<!-- cargar archivos -->
-		<label>Cargar PDF</label>
+		<!-- esto es carga de archivos -->
+		<label>Cargar Imagen </label>
 		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
-		  <button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Archivo PDF</button>
-	    <input type='file' id="getFile" style="display:none" required>
+			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+				<button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Imagen</button>
+				<input name="imagen" type='file' id="getFile" style="display:none" accept="image/*">
+			</div>
 		</div>
-		<label>Cargar Imagen (Opcional)</label>
+		<label>Cargar Archivo </label>
 		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
-		  <button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Imagen</button>
-	    <input type='file' id="getFile" accept="image/*" style="display:none">
+			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+				<button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Cargar pdf</button>
+				<input name="archivo" type='file' id="getFile" style="display:none" accept="application/pdf">
+			</div>
 		</div>
-	<!--
-		<input type="text" name="aliaspaciente" placeholder="Alias paciente" class="form-control" id="floatingInput" required>
-	
-		<input type="text" name="campo1" placeholder="Campo 1" class="form-control" id="floatingInput" required>
-		<input type="number" name="campo2" placeholder="Campo 2" class="form-control" id="floatingInput" required>
-		<input type="number" name="campo3" placeholder="Campo 3" class="form-control" id="floatingInput" required>
-	-->
 		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Estudio</button>
 	</form>
+	
 </main>
 
 {% endblock content %}

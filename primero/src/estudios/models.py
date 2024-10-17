@@ -1,12 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class EstudioUno(models.Model):
+
+class Estudio(models.Model):
 	id 						= models.BigAutoField(primary_key=True, unique=True)
-	aliaspaciente			= models.CharField(max_length=30, null=False, blank=False)
-	campo1					= models.CharField(max_length=3, null=False, blank=False, default="asd")
-	campo2					= models.IntegerField(verbose_name='campo2', default="0")
-	campo3					= models.IntegerField(verbose_name='campo3', default="0")
+	medico					= models.CharField(max_length=30, null=False, blank=False, default="no")
+	paciente				= models.CharField(max_length=30, null=False, blank=False)
+	tipoEstudio				= models.CharField(max_length=30, null=False, blank=False, default="asd")
 	
 	def __str__(self):
-		return self.aliaspaciente + self.campo1
+		return self.medico	+ self.paciente + self.tipoEstudio
+

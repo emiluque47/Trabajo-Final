@@ -33,7 +33,7 @@
     <h1 class="h3 mb-3 fw-normal">Cuenta</h1>
 		<input type="email" name="email" class="form-control" id="floatingInput" placeholder="correo@ejemplo.com" value="{{account_form.initial.email}}">
   	<input type="text" name="username" class="form-control" id="inputUsername" placeholder="contraseña" required value="{{account_form.initial.username}}">
-		{% for field in account_form %}
+		{% for field in CargaEstudio %}
 			{% for error in field.errors %}
 				<p style="color: red;">{{error}}</p>
 			}
