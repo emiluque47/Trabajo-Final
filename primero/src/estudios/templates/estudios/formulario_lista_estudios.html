@@ -30,12 +30,12 @@
 }
 </style>
 <main class="form-signin w-100 m-auto">
-	<form method="POST">
+	<!-- <form method="POST">
 		{% csrf_token %}
 		<h1 class="h3 mb-3 fw-normal">Listado de Estudios</h1>
-		<!-- id médico -->
+		<!-- id médico
 		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
-		<!-- id paciente-->
+		<!-- id paciente
 		<label>Elija un paciente</label>
 		<select style="margin-bottom: 10px;" type="text" name="aliaspaciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
 			{% for paciente in listapacientes %}
@@ -48,9 +48,35 @@
 		<input type="text" name="campo1" placeholder="Campo 1" class="form-control" id="floatingInput" required>
 		<input type="number" name="campo2" placeholder="Campo 2" class="form-control" id="floatingInput" required>
 		<input type="number" name="campo3" placeholder="Campo 3" class="form-control" id="floatingInput" required>
-	-->
+	
 		<button class="btn btn-primary w-100 py-2"  type="submit">Buscar Estudios</button>
-	</form>
+	</form> -->
+	</style>
+	<div class="table-responsive small">
+		<table class="table table-striped table-sm">
+			<thead>
+	      <tr>
+	        <th scope="col">Id</th>
+	        <th scope="col">Medico</th>
+	        <th scope="col">Paciente</th>
+	        <th scope="col">Estudio</th>
+	        <th scope="col">AHHHH</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	{% for estudio in listaestudios %}
+	    	<tr>
+					<td class="text-center align-middle">{{estudio.id}}</td>
+					<td class="text-center align-middle">{{estudio.medico}}</td>
+					<td class="text-center align-middle">{{estudio.paciente}}</td>
+					<td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
+					<td class="text-center align-middle">
+						<a href="{% url 'datos_paciente' %}">Más</a>
+					</td>
+	    	</tr>
+	    	{% endfor %}
+	    </tbody>
+		</table>
 </main>
 
 {% endblock content %}
