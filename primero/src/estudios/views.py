@@ -12,11 +12,12 @@ def carga_estudio_view(request):
 	form = CargaEstudio()
 	data = request.POST
 	imagen2 = request.FILES.get('imagen')
-
+	archivo2 = request.FILES.get('archivo')
 	context={}
 	if request.method == 'POST':
 		print('data: ', data)
 		print('imagen: ', imagen2)
+		print('archivo: ', archivo2)
 		print("if pre valid")
 		form = CargaEstudio(request.POST, request.FILES)
 		if form.is_valid():

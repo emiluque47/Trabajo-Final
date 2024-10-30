@@ -8,6 +8,7 @@ class Estudio(models.Model):
 	paciente				= models.CharField(max_length=30, null=False, blank=False)
 	tipoEstudio				= models.CharField(max_length=30, null=False, blank=False, default="asd")
 	imagen					= models.ImageField(default='fallback.png', blank=True)
+	archivo					= models.FileField(default='fallback.pdf', blank=True)
 	
 	def __str__(self):
 		return self.medico	+ self.paciente + self.tipoEstudio
