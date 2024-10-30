@@ -10,11 +10,17 @@ def carga_estudio_view(request):
 	user = request.user.username
 	listapacientes = Paciente.objects.all().filter(medico=user)
 	form = CargaEstudio()
+	data = request.POST
+	imagen2 = request.FILES.get('imagen')
+
 	context={}
 	if request.method == 'POST':
+		print('data: ', data)
+		print('imagen: ', imagen2)
 		print("if pre valid")
-		form = CargaEstudio(request.POST)
+		form = CargaEstudio(request.POST, request.FILES)
 		if form.is_valid():
+			print(form['medico'])
 			form.save()
 			context['exito'] ="DIE!"
 			print(context['exito'])

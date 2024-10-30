@@ -4,4 +4,4 @@ from pacientes.models import Paciente
 class CargaPaciente(forms.ModelForm):
 	class Meta:
 		model = Paciente
-		fields = ('medico','alias','sexo','nacimiento','edad','peso','altura')
+		fields = ('medico','alias','sexo','raza','nacimiento','edad','peso','altura')

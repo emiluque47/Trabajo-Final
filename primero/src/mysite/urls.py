@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 """ esto es para el resete de password"""
 from django.contrib.auth import views as auth_views
+""" esto es para las imagenes creo """
+from django.conf.urls.static import static
+from django.conf import settings
 
 """mis views"""
 from personal.views import(
@@ -88,3 +91,6 @@ urlpatterns = [
         'registration/password_reset_confirm.html'), name='password_reset_confirm'),
     #----------------------------------------fin de passwords y eso
 ]
+
+""" tambien para imagenes """
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

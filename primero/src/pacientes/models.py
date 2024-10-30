@@ -7,6 +7,7 @@ class Paciente(models.Model):
 	medico					= models.CharField(max_length=30, null=False, blank=False, default="no")
 	alias					= models.CharField(max_length=30, null=False, blank=False)
 	sexo					= models.CharField(max_length=3, null=False, blank=False, default="asd")
+	raza					= models.CharField(max_length=30, null=False, blank=False, default="asd")
 	nacimiento				= models.DateField(verbose_name='nacimiento', default=datetime.date.today )
 	edad					= models.IntegerField(verbose_name='edad', default="0")
 	peso					= models.IntegerField(verbose_name='peso', default="0")

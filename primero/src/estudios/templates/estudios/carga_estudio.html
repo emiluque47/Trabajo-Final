@@ -30,7 +30,7 @@
 }
 </style>
 <main class="form-signin w-100 m-auto">
-	<form method="POST">
+	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
 		<!-- esto es medico -->
@@ -42,6 +42,7 @@
 			<option value="{{paciente.alias}}">{{paciente.alias}}</option>
 			{% endfor %}
 		</select>
+
 		<!-- esto es tipo de estudio -->
 		<label>Elija un Tipo de Estudio</label>
 		<select style="margin-bottom: 10px;" name="tipoEstudio" class="form-control" id="floatingInput" required>
@@ -49,21 +50,23 @@
 		  <option value="Sangre">Análisis de Sangre</option>
 		  <option value="Resonancia">Resonancia Magnetica</option>
 		</select>
+		
 		<!-- esto es carga de archivos -->
+		<label>Cargar PDF </label>
+		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+				<button type="button" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile1').click()">Archivo PDF</button>
+				<input name="archivo" type='file' id="getFile1" style="display:none" accept="application/pdf">
+			</div>
+		</div>
 		<label>Cargar Imagen </label>
 		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
 			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
-				<button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Imagen</button>
-				<input name="imagen" type='file' id="getFile" style="display:none" accept="image/*">
+				<button type="button" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile2').click()">Imagen</button>
+				<input name="imagen" type='file' id="getFile2" style="display:none" accept="image/*">
 			</div>
 		</div>
-		<label>Cargar Archivo </label>
-		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
-			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
-				<button style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Cargar pdf</button>
-				<input name="archivo" type='file' id="getFile" style="display:none" accept="application/pdf">
-			</div>
-		</div>
+		
 		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Estudio</button>
 	</form>
 	
