@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import CargaPaciente
 from pacientes.models import Paciente
 from account.models import Account
+from estudios.models import Estudio
 
 # Create your views here.
 
@@ -26,9 +27,14 @@ def listado_pacientes_view(request):
 	context['listapacientes']=listapacientes
 	return render(request, 'pacientes/lista_paciente.html',context)
 
-def datos_paciente_view(request):
+def datos_paciente_view(request, idPaciente):
 	user = request.user.username
 	context = {}
-	listapacientes = Paciente.objects.all().filter(medico=user)
-	context['listapacientes']=listapacientes
+	print(idPaciente)
+	paciente = Paciente.objects.all().filter(id=idPaciente) #consigo los datos del paciente
+	listaestudios = Estudio.objects.all().filter(paciente__exact=idPaciente)
+	#listaestudios = Estudio.objects.all()
+	context['paciente']= paciente
+	context['listaestudios']= listaestudios
+	print(paciente)
 	return render(request, 'pacientes/datos_paciente.html',context)

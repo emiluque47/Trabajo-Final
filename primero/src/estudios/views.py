@@ -15,13 +15,14 @@ def carga_estudio_view(request):
 	archivo2 = request.FILES.get('archivo')
 	context={}
 	if request.method == 'POST':
+		#print('paciente: ', data['paciente']) #con esto cosigo el valor del input "paciente" del request
 		print('data: ', data)
 		print('imagen: ', imagen2)
 		print('archivo: ', archivo2)
 		print("if pre valid")
 		form = CargaEstudio(request.POST, request.FILES)
 		if form.is_valid():
-			print(form['medico'])
+			#print(form['idpaciente'])
 			form.save()
 			context['exito'] ="DIE!"
 			print(context['exito'])

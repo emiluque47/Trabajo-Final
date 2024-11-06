@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+
+</style>
+<main class="container">
+	<form method="POST">
+		{% csrf_token %}
+		<div class="col">
+			<div class="row p-2">
+				<!-- id del médico -->
+				<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+				<!-- Paciente -->
+				<div class="card col">
+				  <div class="card-body">
+				    <h5 class="card-title" >Seleccionar Paciente</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">Elija un paciente</h6>
+				    <select style="margin-bottom: 10px;" name="paciente" class="form-control" id="PacientesAlias" required>
+				    		<option>Desplegar</option>
+				    	{% for paciente in listapacientes %}
+				      	<option value="{{paciente.id}}">{{paciente.alias}}</option>
+				      {% endfor %}
+				    </select>
+				  </div>
+				</div>
+				<!-- Estudios -->
+				<div class="card col">
+				  <div class="card-body">
+				    <h5 class="card-title">Seleccionar Estudios</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">Elija los estudios para enviar</h6>
+				    <fieldset>
+				      {% for estudio in listaestudios%}
+				      <div>
+				        <input type="checkbox" value="{{estudio.tipoEstudio}}" id="Radio" name="estudio1" />
+				        <label for="{{estudio.tipoEstudio}}">{{estudio.tipoEstudio}} - {{estudio.paciente}}</label>
+				      </div>
+				      {% endfor %}
+				    </fieldset>
+				    
+				  </div>
+				</div>
+				<!-- Notas -->
+				<div class="card col">
+				  <div class="card-body">
+				    <h5 class="card-title">Agregar Notas</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">Para tener en cuenta para la simulación</h6>
+				    <input type="text" name="comentario" id="cometario">
+				    <p></p>
+				  </div>
+				</div>		
+			</div>
+			<div class="row justify-content-center align-items-center align-self-center">
+				<button class="btn btn-primary" type="submit">Enviar Datos</button>	
+			</div>
+		</div>	
+	</form>
+	<script type="text/javascript">
+		const searchInput = document.getElementById("PacientesAlias");
+		const cambio = document.getElementById("cometario");
+		/*const rows = document.querySelectorAll('fieldset input');
+		const rows2 = document.querySelectorAll('fieldset label');*/
+		const rows3 = document.querySelectorAll('fieldset div');
+		searchInput.addEventListener("change", function (event){
+			const q = event.target.value.toLowerCase();
+			document.getElementById("cometario").setAttribute('value',q)
+			//console.log(q);
+			/*
+			// esconde los labels
+			rows2.forEach((row2)=>{
+				row2.textContent.toLowerCase().includes(q)
+				? (row2.style.display = "")
+				: (row2.style.display = "none");
+			});*/
+			// esconde los inputs
+			/*
+			rows.forEach((row)=>{
+				console.log(row.style.display)
+				row.textContent.toLowerCase().includes(q)
+				? (row.style.display = "")
+				: (row.style.display = "none");
+			});*/
+			//esconde el div
+			rows3.forEach((row3)=>{
+				row3.textContent.toLowerCase().includes(q)
+				? (row3.style.display = "")
+				: (row3.style.display = "none");
+			});
+		});
+	</script>
+</main>
+
+{% endblock content %}

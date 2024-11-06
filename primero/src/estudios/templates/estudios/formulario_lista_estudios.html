@@ -52,14 +52,16 @@
 		<button class="btn btn-primary w-100 py-2"  type="submit">Buscar Estudios</button>
 	</form> -->
 	</style>
-	<div class="table-responsive small">
-		<table class="table table-striped table-sm">
+	<div class="table-responsive-xl small ">
+		<table class="table table-striped table-hover">
 			<thead>
 	      <tr>
 	        <th scope="col">Id</th>
 	        <th scope="col">Medico</th>
 	        <th scope="col">Paciente</th>
 	        <th scope="col">Estudio</th>
+	        <th scope="col">Imagen</th>
+	        <th scope="col">PDF</th>
 	        <th scope="col">Más</th>
 	      </tr>
 	    </thead>
@@ -71,7 +73,13 @@
 					<td class="text-center align-middle">{{estudio.paciente}}</td>
 					<td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
 					<td class="text-center align-middle">
-						<a href="{% url 'datos_paciente' %}">Más</a>
+						<a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+					</td>
+					<td class="text-center align-middle">
+						<a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+					</td>
+					<td class="text-center align-middle">
+						<a href="#">Más</a>
 					</td>
 	    	</tr>
 	    	{% endfor %}

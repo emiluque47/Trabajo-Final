@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'pacientes',
     'contacto',
     'estudios',
+    'simulacion',
 #
     'django.contrib.admin',
     'django.contrib.auth',

@@ -51,6 +51,9 @@ from estudios.views import(
     listado_pacientes_estudio_view,
     formulario_lista_estudios_view,
     )
+from simulacion.views import(
+    req_simulacion_view,
+    )
 
 urlpatterns = [
     #generales
@@ -71,10 +74,12 @@ urlpatterns = [
     # paciente
     path('paciente_carga/', paciente_carga_view, name="carga_paciente"),
     path('listado_pacientes/', listado_pacientes_view, name="listado_paciente"),
-    path('datos_paciente/', datos_paciente_view, name="datos_paciente"),
+    path('datos_paciente/<str:idPaciente>/', datos_paciente_view, name="datos_paciente"),
     # estudios
     path('estudio_carga/', carga_estudio_view, name="carga_estudio"),
     path('lista_estudio/', formulario_lista_estudios_view, name="lista_estudio_1"),
+    # simulacion
+    path('simulacion/', req_simulacion_view, name="formulario_simulacion"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), 
         name='password_change_done'),

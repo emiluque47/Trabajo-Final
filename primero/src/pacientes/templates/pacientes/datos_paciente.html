@@ -34,17 +34,41 @@
 	text-align: center;
 }
 </style>
-<main class="form-signin w-100 m-auto">
-	<form method="POST">
-		{% csrf_token %}
-		<h1 class="h3 mb-3 fw-normal">Seleccionar Paciente</h1>
-		<select type="select" name="alias" class="form-control" id="floatingInput" required>
-		{% for paciente in listapacientes %}
-			<option value="{{paciente.id}}">{{paciente.alias}}</option>
-		{% endfor %}
-		</select>
-		<button class="btn btn-primary w-100 py-2"  type="submit">Continuar</button>
-	</form>
+<main>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        {% for paciente in paciente %}
+        <h5 class="card-title">Datos del paciente</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{paciente.alias}}</h6>
+        <p class="card-text">Raza: {{paciente.raza}}</p>
+        <p class="card-text">Sexo: {{paciente.sexo}}</p>
+        <p class="card-text">Edad: {{paciente.edad}}</p>
+        <a href="#" class="card-link">Modificar datos</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Lista de Estudios</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <tbody>
+          {% for estudio in listaestudios %}
+          <tr>
+            <td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
+            <td class="text-center align-middle">
+              <a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+            </td>
+            <td class="text-center align-middle">
+              <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+            </td>
+          </tr>
+          {% endfor %}  
+        </tbody>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary w-100 py-2" href="{% url 'listado_paciente' %}">Volver</a>
 </main>
 
 {% endblock content %}

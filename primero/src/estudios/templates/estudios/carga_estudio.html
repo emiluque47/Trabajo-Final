@@ -39,7 +39,7 @@
 		<label>Elija un Paciente</label>
 		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
 			{% for paciente in listapacientes %}
-			<option value="{{paciente.alias}}">{{paciente.alias}}</option>
+			<option value="{{paciente.id}}">{{paciente.alias}}</option>
 			{% endfor %}
 		</select>
 
@@ -47,8 +47,8 @@
 		<label>Elija un Tipo de Estudio</label>
 		<select style="margin-bottom: 10px;" name="tipoEstudio" class="form-control" id="floatingInput" required>
 		  <option value="Biopsia">Biopsia</option>
-		  <option value="Sangre">Análisis de Sangre</option>
-		  <option value="Resonancia">Resonancia Magnetica</option>
+		  <option value="Análisis de Sangre">Análisis de Sangre</option>
+		  <option value="Resonancia Magnetica">Resonancia Magnetica</option>
 		</select>
 		
 		<!-- esto es carga de archivos -->
