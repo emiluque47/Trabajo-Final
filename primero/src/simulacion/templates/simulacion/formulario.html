@@ -37,37 +37,41 @@
 			<div class="row p-2">
 				<!-- id del médico -->
 				<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+
 				<!-- Paciente -->
-				<div class="card col">
+				<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias -->
+				<div class="card col d-flex">
 				  <div class="card-body">
 				    <h5 class="card-title" >Seleccionar Paciente</h5>
 				    <h6 class="card-subtitle mb-2 text-body-secondary">Elija un paciente</h6>
-				    <select style="margin-bottom: 10px;" name="paciente" class="form-control" id="PacientesAlias" required>
+				    <select style="margin-bottom: 10px;" name="paciente" class="form-control" id="PacientesAlias" required readonly>
 				    		<option>Desplegar</option>
 				    	{% for paciente in listapacientes %}
-				      	<option value="{{paciente.id}}">{{paciente.alias}}</option>
+				      	<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option>
 				      {% endfor %}
 				    </select>
 				  </div>
 				</div>
+
 				<!-- Estudios -->
 				<div class="card col">
-				  <div class="card-body">
+				  <div class="card-body ">
 				    <h5 class="card-title">Seleccionar Estudios</h5>
-				    <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
 				    <h6 class="card-subtitle mb-2 text-body-secondary">Elija los estudios para enviar</h6>
-				    <fieldset>
+				    <fieldset id="Radio"> <!-- esto es para agregar el event listener -->
 				      {% for estudio in listaestudios%}
 				      <div>
-				        <input type="checkbox" value="{{estudio.tipoEstudio}}" id="Radio" name="estudio1" />
-				        <label for="{{estudio.tipoEstudio}}">{{estudio.tipoEstudio}} - {{estudio.paciente}}</label>
+				        <input type="text" name="estudio1" value="" readonly id="{{estudio.id}}"> <!-- obetngo el id del est -->
+				        <input type="checkbox" value="{{estudio.id}}" placeholder="{{estudio.tipoEstudio}}"  name="idestudio1" />
+				        <label for="{{estudio.tipoEstudio}}">{{estudio.tipoEstudio}} - {{estudio.aliaspaciente}}</label>
 				      </div>
 				      {% endfor %}
 				    </fieldset>
 				    
 				  </div>
 				</div>
-				<!-- Notas -->
+
+				<!-- Comentario -->
 				<div class="card col">
 				  <div class="card-body">
 				    <h5 class="card-title">Agregar Notas</h5>
@@ -84,14 +88,29 @@
 	</form>
 	<script type="text/javascript">
 		const searchInput = document.getElementById("PacientesAlias");
-		const cambio = document.getElementById("cometario");
+		const inputEstudios = document.getElementById("Radio");
 		/*const rows = document.querySelectorAll('fieldset input');
 		const rows2 = document.querySelectorAll('fieldset label');*/
 		const rows3 = document.querySelectorAll('fieldset div');
+		console.log("killm me");
+
+		
+		inputEstudios.addEventListener("change", function (event){
+			console.log(event.target.value); 
+			const elid = event.target.value; //me devuelve el id del estudio
+			const eltipo = event.target.placeholder; //me devuelve el tipo del estudio (almacenado en el placeholder)
+			document.getElementById(elid).setAttribute("value",eltipo); //asigno el id en el input idestudio1
+			console.log(eltipo);
+		})
+
 		searchInput.addEventListener("change", function (event){
-			const q = event.target.value.toLowerCase();
-			document.getElementById("cometario").setAttribute('value',q)
-			//console.log(q);
+			const q = event.target.value.toLowerCase(); //obentgo la opción seleccionada (el alias)
+			const e = document.getElementById(q).getAttribute("placeholder"); //obtengo el id del paciente
+			document.getElementById("numeroId").setAttribute('value',e); // asigno ese id al campo numeroId
+			const le = e.toLowerCase(); //pongo en minúsculas el alias
+			/*console.log(q);
+			console.log(e);
+			console.log(le);*/
 			/*
 			// esconde los labels
 			rows2.forEach((row2)=>{
@@ -109,10 +128,12 @@
 			});*/
 			//esconde el div
 			rows3.forEach((row3)=>{
-				row3.textContent.toLowerCase().includes(q)
+				row3.textContent.toLowerCase().includes(le) //pregunto si la opcion contiene el alias elegido (ambos en minuscula)
 				? (row3.style.display = "")
 				: (row3.style.display = "none");
 			});
+
+
 		});
 	</script>
 </main>

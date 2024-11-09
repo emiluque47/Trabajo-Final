@@ -53,6 +53,9 @@ from estudios.views import(
     )
 from simulacion.views import(
     req_simulacion_view,
+    list_simulacion_view,
+    datos_simulacion_view,
+    list_respuestas_view,
     )
 
 urlpatterns = [
@@ -80,6 +83,9 @@ urlpatterns = [
     path('lista_estudio/', formulario_lista_estudios_view, name="lista_estudio_1"),
     # simulacion
     path('simulacion/', req_simulacion_view, name="formulario_simulacion"),
+    path('listado_simulacion/', list_simulacion_view, name="lista_simulacion"),
+    path('datos_simulacion/<str:idSimulacion>/', datos_simulacion_view, name="datos_simulacion"),
+    path('lista_respuestas/', list_respuestas_view, name="lista_respuestas"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), 
         name='password_change_done'),

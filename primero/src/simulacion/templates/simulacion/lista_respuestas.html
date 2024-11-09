@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+<div class="table-responsive-xl small ">
+	<table class="table table-striped table-hover">
+		<thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Comentario</th>
+        <th scope="col">Estudio</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for respuesta in respuestas %}
+    	<tr>
+				<td class="text-center align-middle">{{respuesta.id}}</td>
+				<td class="text-center align-middle">{{respuesta.comentario}}</td>
+				<td class="text-center align-middle">
+					<a href="{{respuesta.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+				</td>
+				
+    	</tr>
+    	{% endfor %}
+    </tbody>
+	</table>
+</div>
+</main>
+{% endblock content %}

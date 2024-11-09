@@ -51,7 +51,6 @@
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Lista de Estudios</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
         <tbody>
           {% for estudio in listaestudios %}
           <tr>
@@ -63,6 +62,10 @@
               <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
             </td>
           </tr>
+          {% empty %}
+            <td class="text-center align-middle">Este paciente no tiene estudios cargados.</td>
+            <p></p>
+            <a href="{% url 'carga_estudio' %}" class="card-link">Cargar Estudios</a>
           {% endfor %}  
         </tbody>
       </div>

@@ -37,12 +37,19 @@
 		<input type="text" name="medico" class="form-control" id="disabledInput" value="{{ request.user.username }}" disabled required>
 -->
 		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+		<label>Alias Paciente</label>
 		<input type="text" name="alias" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
+		<label>Sexo</label>
 		<input type="text" name="sexo" placeholder="Sexo" class="form-control" id="floatingInput" required>
+		<label>Raza</label>
 		<input type="text" name="raza" placeholder="Raza" class="form-control" id="floatingInput" required>
+		<label>Fecha de Nacimiento</label>
 		<input type="date" name="nacimiento" placeholder="Fecha de Nacimiento" class="form-control" id="floatingInput" required>
+		<label>Edad</label>
 		<input type="number" name="edad" placeholder="Edad" class="form-control" id="floatingInput" required>
+		<label>Peso(Kg.)</label>
 		<input type="number" name="peso" placeholder="Peso" class="form-control" id="floatingInput" required>
+		<label>Altura(Cm.)</label>
 		<input type="number" name="altura" placeholder="Altura (cm)" class="form-control" id="floatingInput" required>
 <!-- 		{% for field in form %}
 			{{field.name}}

@@ -35,11 +35,14 @@
 		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
 		<!-- esto es medico -->
 		<input type="hidden" name="medico" placeholder="srqerqer" class="form-control" id="floatingInput" value="{{ user.username }}" required>
+
 		<!-- esto es paciente -->
+		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias -->
 		<label>Elija un Paciente</label>
-		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
+		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="PacientesAlias"  required>
+			<option>Desplegar</option>
 			{% for paciente in listapacientes %}
-			<option value="{{paciente.id}}">{{paciente.alias}}</option>
+			<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option> <!-- obetngo el id -->
 			{% endfor %}
 		</select>
 
@@ -69,7 +72,18 @@
 		
 		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Estudio</button>
 	</form>
-	
+	<script type="text/javascript">
+		const searchInput = document.getElementById("PacientesAlias");
+		searchInput.addEventListener("change", function (event){
+			//console.log(event)
+			const q = event.target.value.toLowerCase();
+			const e = document.getElementById(q).getAttribute("placeholder")
+			//const w = document.getElementById("PacientesAlias").getAttribute("value")
+			console.log(q)
+			console.log(e)
+			document.getElementById("numeroId").setAttribute('value',e)
+		});
+	</script>
 </main>
 
 {% endblock content %}
