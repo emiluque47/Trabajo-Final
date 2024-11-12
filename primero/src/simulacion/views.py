@@ -16,9 +16,16 @@ def req_simulacion_view(request):
 	if request.method == 'POST':
 		print("Es post")
 		formulario = ReqSimu(request.POST)
+		#print(formulario.errors) fields = ('medico','paciente', 'aliaspaciente','estudio1', 'idestudio1','comentario')
+		# print("Medico: ",formulario['medico'].value())
+		# print("Paciente: ",formulario['paciente'].value())
+		# print("Aliaspaciente: ",formulario['aliaspaciente'].value())
+		# print("campo estudio1 (el alias de estudio): ",formulario['estudio1'].value())
+		# print("campo idestudio1(el id del estudio): ",formulario['idestudio1'].value())
+		# print("Comentario: ",formulario['comentario'].value())
+		#print(formulario['comentario'].value()) #no borro esta linea porque me sirve para acceder al valor
 		if formulario.is_valid():
 			print("Es valido")
-			print(formulario)
 			formulario.save()
 	return render(request, 'simulacion/formulario.html', context)
 

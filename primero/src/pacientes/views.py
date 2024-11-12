@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CargaPaciente
 from pacientes.models import Paciente
 from account.models import Account
@@ -16,6 +16,7 @@ def paciente_carga_view(request):
 			form.save()
 			context['exito'] ="Paciente Cargado!"
 			print(context['exito'])
+			return redirect('listado_paciente')
 	context = {'form':form}
 	return render(request, 'pacientes/carga_paciente.html', context)
 

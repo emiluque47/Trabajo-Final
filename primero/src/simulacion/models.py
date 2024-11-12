@@ -9,7 +9,7 @@ class Form_Sim(models.Model):
 	fecha_estudio			= models.DateTimeField(verbose_name='date joined', default=datetime.datetime.now()) #no debería decir fecha_estudio, sino simulacion
 	paciente				= models.CharField(max_length=30, null=False, blank=False) #esto es el id del paciente
 	aliaspaciente			= models.CharField(max_length=30, null=False, blank=False, default="testing") #esto es el alias del paciente
-	estudio1				= models.CharField(max_length=30, null=False, blank=False) #esto está guardando el alias de estudio, no el id
+	estudio1				= models.CharField(max_length=30, null=False, blank=False) #esto está guardando el alias de estudio,
 	idestudio1				= models.CharField(max_length=30, null=False, blank=False, default="30") #esto es el id del estudio
 	comentario				= models.CharField(max_length=30, null=False, blank=False)
 	#

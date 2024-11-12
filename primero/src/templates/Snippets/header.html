@@ -4,17 +4,17 @@
 
 <!-- copio del ejemplo de pricing -->
 <style type="text/css">
-	body {
+	/*body {
 	  background-image: linear-gradient(180deg, var(--bs-secondary-bg), var(--bs-body-bg) 100px, var(--bs-body-bg));
-	}
+	}*/
 
 	.container {
 	  max-width: 960px;
 	}
 
-	.pricing-header {
+	/*.pricing-header {
 	  max-width: 700px;
-	}
+	}*/
 </style>
  
 <div class="d-flex flex-column flex-md-row align-items-center pb-0 mb-0 " style="background-color: #212529;">
@@ -27,6 +27,7 @@
   </a>
 
   <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+
   	{% if request.user.is_authenticated %} <!-- acá pregunto si está autenticado -->
 	  	{% if request.user.is_admin %}<!-- es admin? -->
 	  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
@@ -36,20 +37,36 @@
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'account' %}">Account</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
 	    {% elif request.user.is_doctor %} <!-- es doctor? -->
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-success fw-bold" href="{% url 'carga_paciente' %}">Cargar Pacientes</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'listado_paciente' %}">Listar Pacientes</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-success fw-bold" href="{% url 'carga_estudio' %}">Cargar Estudio</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'lista_estudio_1' %}">Listar Estudios (D)</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-success fw-bold" href="{% url 'formulario_simulacion' %}">Formulario de Simulación</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'lista_simulacion' %}">Lista Simulacion (D)</a>
+	    <div class="dropdown">
+	      <button class="btn btn-secondary dropdown-toggle me-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+	        Pacientes
+	      </button>
+	      <ul class="dropdown-menu">
+	        <li><a class="dropdown-item" href="{% url 'carga_paciente' %}">Cargar Pacientes</a></li>
+	        <li><a class="dropdown-item" href="{% url 'listado_paciente' %}">Listar Pacientes</a></li>
+	      </ul>
+	    </div>
+	    <!--
+	    <div class="dropdown">
+	      <button class="btn btn-secondary dropdown-toggle me-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+	        Estudios
+	      </button>
+	      <ul class="dropdown-menu">
+	        <li><a class="dropdown-item " href="{% url 'carga_estudio' %}">Cargar Estudio</a></li>
+	        <li><a class="dropdown-item" href="{% url 'lista_estudio_1' %}">Listar Estudios (D)</a></li>
+	      </ul>
+	    </div>
+	  -->
+	    	<a class="btn btn-primary me-3 py-2" href="{% url 'carga_estudio' %}">Cargar Estudio</a>
+	    	<a class="btn btn-success me-3 py-2" href="{% url 'formulario_simulacion' %}">Formulario de Simulación</a>
+	    	<a class="btn btn-info me-3 py-2" href="{% url 'lista_simulacion' %}">Resultados de Simulaciones</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'logout' %}">Logout</a>
 	    {% elif request.user.is_investigador %} <!-- es investigador? -->
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="#">Mensajes</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-success fw-bold" href="{% url 'lista_simulacion' %}">Lista Simulacion (D)</a>
-	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary fw-bold" href="{% url 'lista_respuestas' %}">Lista de Respuestas</a>
+	    	<a class="btn btn-success me-3 py-2" href="{% url 'lista_simulacion' %}">Solicitudes</a>
+	    	<a class="btn btn-info me-3 py-2" href="{% url 'lista_respuestas' %}">Lista de Respuestas</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'team_main' %}">Equipo</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
@@ -61,6 +78,7 @@
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-white fw-bold" href="{% url 'login' %}">Login</a>
     {% endif %}
+    
   </nav>
 </div>
 
