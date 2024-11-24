@@ -28,21 +28,24 @@
 .h3{
 	text-align: center;
 }
+.textarea{
+    resize: vertical;
+    width: 90%;
+}
 </style>
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-100 h-25 m-auto">
+	<h1 class="h3 mb-3 fw-normal">Cargar Paciente</h1>
 	<form method="POST">
 		{% csrf_token %}
-		<h1 class="h3 mb-3 fw-normal">Cargar Paciente</h1>
 		<!--
-		<input type="text" name="medico" class="form-control" id="disabledInput" value="{{ request.user.username }}" disabled required>
--->
+		<h1 class="h3 mb-3 fw-normal">Cargar Paciente</h1>
 		<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
 		<label>Alias Paciente</label>
 		<input type="text" name="alias" placeholder="Alias Paciente" class="form-control" id="floatingInput"  required>
 		<label>Sexo</label>
 		<input type="text" name="sexo" placeholder="Sexo" class="form-control" id="floatingInput" required>
-		<label>Raza</label>
-		<input type="text" name="raza" placeholder="Raza" class="form-control" id="floatingInput" required>
+		<label>Etnia</label>
+		<input type="text" name="etnia" placeholder="Etnia" class="form-control" id="floatingInput" required>
 		<label>Fecha de Nacimiento</label>
 		<input type="date" name="nacimiento" placeholder="Fecha de Nacimiento" class="form-control" id="floatingInput" required>
 		<label>Edad</label>
@@ -51,15 +54,11 @@
 		<input type="number" name="peso" placeholder="Peso" class="form-control" id="floatingInput" required>
 		<label>Altura(Cm.)</label>
 		<input type="number" name="altura" placeholder="Altura (cm)" class="form-control" id="floatingInput" required>
-<!-- 		{% for field in form %}
-			{{field.name}}
-			{{field}}
-		{% endfor %} -->
-		{% if exito %}
-			<p style="color:green; text-align:center;">{{exito}}</p>
-		{% endif %}
+	-->
+		
+		{{ form.as_p }}
+		<button class="btn btn-primary w-100 py-2" style="background-color: #a370f7"  type="submit">Cargar Paciente</button>
 
-		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Paciente</button>
 	</form>
 </main>
 

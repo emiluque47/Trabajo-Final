@@ -31,31 +31,41 @@ from personal.views import(
     team_single_view_3,
     team_single_view_4,
     team_single_view_5,
+    team_single_view_6,
     )
 from account.views import(
     registration_view,
     logout_view,
     login_view,
     account_view,
+    actualizar_datos_cuenta_view,
     )
 from pacientes.views import(
     paciente_carga_view,
     listado_pacientes_view,
     datos_paciente_view,
+    modificar_datos_paciente_view,
+    borrar_paciente_view,
     )
 from contacto.views import(
     contacto_view,
     )
 from estudios.views import(
     carga_estudio_view,
-    listado_pacientes_estudio_view,
-    formulario_lista_estudios_view,
+    #listado_pacientes_estudio_view,
+    #formulario_lista_estudios_view,
+    borrar_estudio_view,
     )
 from simulacion.views import(
     req_simulacion_view,
     list_simulacion_view,
     datos_simulacion_view,
     list_respuestas_view,
+    datos_simulacion_medico_view,
+    listado_solicitudes_view,
+    solicitud_simulacion_view,
+    borrar_solicitud_view,
+    borrar_respuesta_view,
     )
 
 urlpatterns = [
@@ -67,6 +77,7 @@ urlpatterns = [
     path('login/', login_view, name="login"),
     path('account/', account_view, name="account"),
     path('contacto/', contacto_view, name="contacto"),
+    path('datos_cuenta/', actualizar_datos_cuenta_view, name="datos_cuenta"),
     # equipo
     path('team_main/', team_main_view, name="team_main"),
     path('team_single/', team_single_view, name="team_single"),
@@ -74,18 +85,27 @@ urlpatterns = [
     path('team_single_3/', team_single_view_3, name="team_single_3"),
     path('team_single_4/', team_single_view_4, name="team_single_4"),
     path('team_single_5/', team_single_view_5, name="team_single_5"),
+    path('team_single_6/', team_single_view_6, name="team_single_6"),
     # paciente
     path('paciente_carga/', paciente_carga_view, name="carga_paciente"),
     path('listado_pacientes/', listado_pacientes_view, name="listado_paciente"),
     path('datos_paciente/<str:idPaciente>/', datos_paciente_view, name="datos_paciente"),
+    path('modificar_datos_paciente/<str:idPaciente>/', modificar_datos_paciente_view, name="modificar_datos_paciente"),
+    path('borrar_paciente/<str:idPaciente>/', borrar_paciente_view, name="borrar_paciente"),
     # estudios
     path('estudio_carga/', carga_estudio_view, name="carga_estudio"),
-    path('lista_estudio/', formulario_lista_estudios_view, name="lista_estudio_1"),
+    #path('lista_estudio/', formulario_lista_estudios_view, name="lista_estudio_1"),
+    path('borrar_estudio/<str:idEstudio>/', borrar_estudio_view, name="borrar_estudio"),
     # simulacion
     path('simulacion/', req_simulacion_view, name="formulario_simulacion"),
     path('listado_simulacion/', list_simulacion_view, name="lista_simulacion"),
     path('datos_simulacion/<str:idSimulacion>/', datos_simulacion_view, name="datos_simulacion"),
     path('lista_respuestas/', list_respuestas_view, name="lista_respuestas"),
+    path('datos_simulacion_medico/<str:idSimulacion>/', datos_simulacion_medico_view, name="datos_simulacion_medico"),
+    path('listado_solicitudes/', listado_solicitudes_view, name="lista_solicitudes"),
+    path('solicitud_simulacion/', solicitud_simulacion_view, name="solicitud_simulacion"),
+    path('borrar_solicitud/<str:idSolicitud>/', borrar_solicitud_view, name="borrar_solicitud"),
+    path('borrar_respuesta/<str:idRespuesta>/', borrar_respuesta_view, name="borrar_respuesta"),
     #----------------------------------------Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), 
         name='password_change_done'),

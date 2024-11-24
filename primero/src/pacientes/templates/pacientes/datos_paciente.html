@@ -41,10 +41,16 @@
         {% for paciente in paciente %}
         <h5 class="card-title">Datos del paciente</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">{{paciente.alias}}</h6>
-        <p class="card-text">Raza: {{paciente.raza}}</p>
-        <p class="card-text">Sexo: {{paciente.sexo}}</p>
-        <p class="card-text">Edad: {{paciente.edad}}</p>
-        <a href="#" class="card-link">Modificar datos</a>
+        <p class="card-text"><b>Etnia</b>: {{paciente.etnia}}</p>
+        <p class="card-text"><b>Sexo</b>: {{paciente.sexo}}</p>
+        <p class="card-text"><b>Edad</b>: {{paciente.edad}}</p>
+        <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
+        <p class="card-text"><b>Peso (kg)</b>: {{paciente.peso}}</p>
+        <p class="card-text"><b>Altura(cm)</b>: {{paciente.altura}}</p>
+        <p class="card-text"><b>Comentario</b>:<br> <i>{{paciente.comentario}}</i></p>
+        <a href="{% url 'modificar_datos_paciente' paciente.id %}" class="card-link ">Modificar datos</a>
+        <p></p>
+        <a class="btn btn-danger w-100 py-2" href="{% url 'borrar_paciente' paciente.id %}" class="card-link" onclick="if (!confirm('Are you sure?')) return false;">Eliminar Paciente</a>
         {% endfor %}
       </div>
     </div>
@@ -54,24 +60,31 @@
         <tbody>
           {% for estudio in listaestudios %}
           <tr>
-            <td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
+            <td class="text-center align-middle"><b>Tipo de estudio</b>: {{estudio.tipoEstudio}}</td>
+            <br>
             <td class="text-center align-middle">
-              <a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
-            </td>
-            <td class="text-center align-middle">
+              <b>Archivo</b>:
               <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
             </td>
+            <br>
+            <td class="text-center align-middle"><b>Comentario</b>: {{estudio.comentario}}</td>
+            <br>
+            <td class="align-middle">
+              <a class="btn btn-danger " href="{% url 'borrar_estudio' estudio.id %}" class="card-link" onclick="if (!confirm('Are you sure?')) return false;">Eliminar</a>
+            </td>
           </tr>
+          <hr>
           {% empty %}
             <td class="text-center align-middle">Este paciente no tiene estudios cargados.</td>
             <p></p>
-            <a href="{% url 'carga_estudio' %}" class="card-link">Cargar Estudios</a>
+            <a  href="{% url 'carga_estudio' %}" class="card-link">Cargar Estudios</a>
+            <hr>
           {% endfor %}  
         </tbody>
       </div>
     </div>
   </div>
-  <a class="btn btn-primary w-100 py-2" href="{% url 'listado_paciente' %}">Volver</a>
+  <a class="btn btn-primary w-100 py-2" style="background-color: #a370f7" href="{% url 'listado_paciente' %}">Volver</a>
 </main>
 
 {% endblock content %}

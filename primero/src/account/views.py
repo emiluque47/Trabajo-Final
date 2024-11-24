@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
+from account.models import Account
+from .forms import FormDatosCuenta
 # Create your views here.
 
 def registration_view(request):
@@ -66,3 +68,20 @@ def account_view(request):
 			)
 	context['account_form'] = form
 	return render(request,'account/account.html', context)
+
+def actualizar_datos_cuenta_view(request):
+	if not request.user.is_authenticated:
+		return redirect("login")
+	user = request.user
+	context = {}
+	cuenta = Account.objects.get(pk=user.id)
+	form = FormDatosCuenta()
+	form = FormDatosCuenta(request.POST or None, instance=cuenta)
+	if form.is_valid():
+		#carga= form.save(commit=False)
+		#carga.cuenta = user
+		form.save()
+		return redirect('home')
+	context['form'] = form
+	return render(request, 'account/datos.html',context)
+

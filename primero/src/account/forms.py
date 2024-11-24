@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import authenticate
 
-from account.models import Account
+from account.models import Account, DatosCuenta
 
 class RegistrationForm(UserCreationForm):
 	email = forms.EmailField(max_length=60, help_text='Requerido. Ingresar una dir valida')
@@ -43,3 +43,22 @@ class AccountUpdateForm(forms.ModelForm):
 			except Account.DoesNotExist:
 				return username
 			raise forms.ValidationError('Username "%s" is already in use' % account.username)
+
+class FormDatosCuenta (forms.ModelForm):
+	class Meta:
+		model=DatosCuenta
+		fields=('nombre', 'apellido', 'especialidad', 'institucion', 'matricula')
+		labels={
+			'nombre':'Nombre',
+			'apellido' : 'Apellido',
+			'especialidad' : 'Especialidad',
+			'institucion' : 'Institución',
+			'matricula' : 'Matricula',
+		}
+		widgets={
+			'nombre': forms.TextInput(attrs={'class':'form-control'}),
+			'apellido': forms.TextInput(attrs={'class':'form-control'}),
+			'especialidad': forms.TextInput(attrs={'class':'form-control'}),
+			'institucion': forms.TextInput(attrs={'class':'form-control'}),
+			'matricula': forms.TextInput(attrs={'class':'form-control'}),
+		}

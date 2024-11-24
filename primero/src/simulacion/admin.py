@@ -1,21 +1,20 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Form_Sim, Respuesta
+from .models import Solicitudes, Respuesta
 # Register your models here.
 
-class AdminFormReq(UserAdmin):
-	list_display =('medico','paciente','estudio1','comentario','fecha_estudio')
+class AdminFormReq(admin.ModelAdmin):
+	list_display =('medico','paciente','comentario','fecha_simulacion')
 	search_fields =['medico']
 	filter_horizontal =()
 	list_filter=()
 	fieldsets=()
 	ordering = ['id']
 
-admin.site.register(Form_Sim, AdminFormReq)
+admin.site.register(Solicitudes, AdminFormReq)
 
-class AdminRespuesta(UserAdmin):
-	list_display =('idformulario', 'comentario', 'archivo')
-	
+class AdminRespuesta(admin.ModelAdmin):
+	list_display =('formulario', 'comentario', 'archivo')
 	filter_horizontal =()
 	list_filter=()
 	fieldsets=()

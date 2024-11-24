@@ -25,3 +25,6 @@ def team_single_view_4(request):
 
 def team_single_view_5(request):
 	return render (request,"equipo/equipo_single_5.html",{})
+
+def team_single_view_6(request):
+	return render (request,"equipo/equipo_single_6.html",{})	

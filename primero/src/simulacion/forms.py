@@ -1,12 +1,25 @@
 from django import forms
-from simulacion.models import Form_Sim, Respuesta
+from simulacion.models import Solicitudes, Respuesta
 
-class ReqSimu (forms.ModelForm):
+class FormSolicitudes (forms.ModelForm):
 	class Meta:
-		model = Form_Sim
-		fields = ('medico','paciente', 'aliaspaciente','estudio1', 'idestudio1','comentario')
+		model = Solicitudes
+		fields = ('medico','paciente', 'comentario')
+		labels = {
+			'comentario': 'Comentario pertinente al paciente (opcional)'
+		}
+		widgets = {
+			'comentario': forms.Textarea(attrs={'class':'form-control','rows':'3'})
+		}
 
 class FormRespuesta (forms.ModelForm):
 	class Meta:
 		model = Respuesta
-		fields = ('idformulario', 'comentario', 'archivo')
+		fields = ('formulario', 'comentario', 'archivo')
+		labels = {
+			'comentario': 'Comentario pertinente a la simluación (opcional)',
+			'archivo' :'Cargar Archivo'
+		}
+		widgets = {
+			'comentario': forms.Textarea(attrs={'class':'form-control','rows':'3'})
+		}

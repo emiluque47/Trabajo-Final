@@ -29,15 +29,12 @@
 	text-align: center;
 }
 </style>
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-100 m-auto ">
 	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
-		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
-		<!-- esto es medico -->
-		<input type="hidden" name="medico" placeholder="srqerqer" class="form-control" id="floatingInput" value="{{ user.username }}" required>
 
-		<!-- esto es paciente -->
-		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias -->
+		<h1 class="h3 mb-3 fw-normal">Cargar Estudio</h1>
+		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias-->
 		<label>Elija un Paciente</label>
 		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="PacientesAlias"  required>
 			<option>Desplegar</option>
@@ -45,8 +42,37 @@
 			<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option> <!-- obetngo el id -->
 			{% endfor %}
 		</select>
+		<!--
+		{{ form.paciente.label }}
+		{{ form.paciente }}
+	-->
+		{{ form.tipoEstudio.label }}
+		{{ form.tipoEstudio }}
+		<br>
+		<label>Cargar Archivo</label>
+		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
+				<button type="button" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile1').click()">Archivo</button>
+				<input name="archivo" type='file' id="getFile1" style="display:none">
+			</div>
+		</div>
+		{{ form.comentario.label }}
+		{{ form.comentario }}
+		<br>
+		<!-- esto es medico 
+		<input type="hidden" name="medico" placeholder="srqerqer" class="form-control" id="floatingInput" value="{{ user.username }}" required>
 
-		<!-- esto es tipo de estudio -->
+		<!-- esto es paciente 
+		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias
+		<label>Elija un Paciente</label>
+		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="PacientesAlias"  required>
+			<option>Desplegar</option>
+			{% for paciente in listapacientes %}
+			<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option> <!-- obetngo el id 
+			{% endfor %}
+		</select>
+
+		<!-- esto es tipo de estudio 
 		<label>Elija un Tipo de Estudio</label>
 		<select style="margin-bottom: 10px;" name="tipoEstudio" class="form-control" id="floatingInput" required>
 		  <option value="Biopsia">Biopsia</option>
@@ -54,7 +80,7 @@
 		  <option value="Resonancia Magnetica">Resonancia Magnetica</option>
 		</select>
 		
-		<!-- esto es carga de archivos -->
+		<!-- esto es carga de archivos 
 		<label>Cargar PDF </label>
 		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
 			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
@@ -69,9 +95,10 @@
 				<input name="imagen" type='file' id="getFile2" style="display:none" accept="image/*">
 			</div>
 		</div>
-		
-		<button class="btn btn-primary w-100 py-2"  type="submit">Cargar Estudio</button>
+		-->
+		<button class="btn btn-primary w-100 py-2" style="background-color: #a370f7"  type="submit">Cargar Estudio</button>
 	</form>
+	<!--
 	<script type="text/javascript">
 		const searchInput = document.getElementById("PacientesAlias");
 		searchInput.addEventListener("change", function (event){
@@ -83,7 +110,7 @@
 			console.log(e)
 			document.getElementById("numeroId").setAttribute('value',e)
 		});
-	</script>
+	</script>-->
 </main>
 
 {% endblock content %}

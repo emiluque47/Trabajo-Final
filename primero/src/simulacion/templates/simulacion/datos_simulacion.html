@@ -7,39 +7,51 @@
   <div class="row">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% for simulacion in simulacion %}
+        
         <h5 class="card-title">Datos de la simulación</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{simulacion.medico}}</h6>
-        <p class="card-text"> <b>Fecha de Pedido</b>: {{simulacion.fecha_estudio}}</p>
-        <p class="card-text"><b>Comentario</b>: </p>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Médico: {{simulacion.medico.alias}}</h6>
+        <p class="card-text"> <b>Fecha de Pedido</b>: {{simulacion.fecha_simulacion}}</p>
+        <p class="card-text"><b>Comentario del médico</b>: </p>
         <p class="card-text"><i>{{simulacion.comentario}}</i></p>
-        {% endfor %}
+        
       </div>
     </div>
 
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% for paciente in paciente %}
+        
         <h5 class="card-title">Datos del paciente</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">{{paciente.alias}}</h6>
-        <p class="card-text"> <b>Raza</b>: {{paciente.raza}}</p>
+        <p class="card-text"> <b>Etnia</b>: {{paciente.etnia}}</p>
         <p class="card-text"><b>Sexo</b>: {{paciente.sexo}}</p>
         <p class="card-text"><b>Edad</b>: {{paciente.edad}}</p>
         <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
         <p class="card-text"><b>Peso</b>: {{paciente.peso}}</p>
         <p class="card-text"><b>Altura</b>: {{paciente.altura}}</p>
-        {% endfor %}
+        
       </div>
     </div>
 
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% for estudio in estudio %}
-        <h5 class="card-title">Estudios Anexados</h5>
-        <p class="card-text"> <b>{{estudio.tipoEstudio}}</b></p>
-        <a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
-        <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
-        {% endfor %}
+        {% for estudio in listaEstudios %}
+          <tr>
+            <td class="text-center align-middle"><b>Tipo de estudio</b>: {{estudio.tipoEstudio}}</td>
+            <br>
+            <td class="text-center align-middle">
+              <b>Archivo</b>:
+              <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+            </td>
+            <br>
+            <td class="text-center align-middle"><b>Comentario</b>: {{estudio.comentario}}</td>
+            <br>
+          </tr>
+          <hr>
+          {% empty %}
+            <td class="text-center align-middle">Este paciente no tiene estudios cargados.</td>
+            <p></p>
+            <hr>
+          {% endfor %} 
       </div>
     </div>
     <!-- formulario de respuesta -->
@@ -47,12 +59,13 @@
       <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="card-body">
-        {% for simulacion in simulacion %}
+        
           <input  name="idformulario" class="form-control" id="floatingInput" value="{{simulacion.id}}" required readonly hidden>
-        {% endfor %}
+        
         <h5 class="card-title">Resultados de la Simulacion</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">Anexar los resultados obtenidos</h6>
         <label>Cargar PDF </label>
+        
         <div style="margin-bottom: 10px;" class="d-flex justify-content-center">
           <div style="margin-bottom: 10px;" class="d-flex justify-content-center">
             <button type="button" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile1').click()">Archivo PDF</button>
@@ -60,9 +73,12 @@
           </div>
         </div>
         <p class="card-text"> <b>Notas</b></p>
+        <textarea name="comentario" id="comentario" rows="4" cols="30" required></textarea>
+        <!--
         <input type="text" name="comentario" id="cometario">
+-->
         <p></p> 
-        <button class="btn btn-primary" type="submit">Enviar Datos</button> 
+        <button class="btn btn-primary" style="background-color: #a370f7" type="submit">Enviar Datos</button> 
       </div>
       </form>
     </div>

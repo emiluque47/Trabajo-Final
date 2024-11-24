@@ -1,7 +1,31 @@
 from django import forms
+from django.forms import ModelForm
 from pacientes.models import Paciente
 
-class CargaPaciente(forms.ModelForm):
+class CargaPaciente(ModelForm):
 	class Meta:
 		model = Paciente
-		fields = ('medico','alias','sexo','raza','nacimiento','edad','peso','altura')
+		#saqué 'medico', ya que lo agrego en el view
+		fields = ('alias','sexo','etnia','nacimiento','edad','peso','altura','comentario')
+		labels = {
+			#'medico':'',
+			'alias': 'Ingrese un Alias para el paciente',
+			'sexo': 'Sexo del paciente',
+			'etnia': 'Etnia del paciente',
+			'nacimiento': 'Seleccione la fecha de nacimiento',
+			'edad': 'Edad del paciente',
+			'peso':'Peso (kg)',
+			'altura': 'Altura (cm)',
+			'comentario': 'Comentario pertinente al paciente (opcional)'
+		}
+		widgets = {
+			#'medico': forms.Select(attrs={'class':'form-control'}),
+			'alias': forms.TextInput(attrs={'class':'form-control'}),
+			'sexo': forms.TextInput(attrs={'class':'form-control'}),
+			'etnia': forms.TextInput(attrs={'class':'form-control'}),
+			'nacimiento': forms.DateInput(attrs={'class':'form-control','type':'date'}),
+			'edad': forms.NumberInput(attrs={'class':'form-control'}),
+			'peso': forms.NumberInput(attrs={'class':'form-control'}),
+			'altura': forms.NumberInput(attrs={'class':'form-control'}),
+			'comentario': forms.Textarea(attrs={'class':'form-control','rows':'3'})
+		}
