@@ -41,7 +41,7 @@
 	<input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nombres" required autofocus>
 	<input type="text" name="lastname" class="form-control" id="floatingInput" placeholder="Apellidos" required>
 	<input type="email" name="email" class="form-control" id="floatingInput" placeholder="correo@ejemplo.com" required>
-	<input type="text" name="message" class="form-control" id="floatingInput" placeholder="Dinos el motivo de tu mensaje" required>
+	<textarea name="message" class="form-control" id="floatingInput" placeholder="Dinos el motivo de tu mensaje" required></textarea>
 	
 	{% for field in registration_form %}
 		{% for error in field.errors %}

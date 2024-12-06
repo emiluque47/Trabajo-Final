@@ -3,6 +3,7 @@ from .forms import CargaEstudio
 from pacientes.models import Paciente
 from account.models import Account
 from estudios.models import Estudio
+from django.contrib import messages
 
 #Se encarga de borrar el estudio idEstudio
 def borrar_estudio_view(request, idEstudio):
@@ -39,6 +40,9 @@ def carga_estudio_view(request):
 			carga.medico = request.user.email
 			carga.save()
 			return redirect('solicitud_simulacion')
+		else:
+			messages.success(request,("Por favor verifique los datos cargados"))
+			return redirect ('carga_estudio')
 	context = {'form':form}
 	context['listapacientes']=listapacientes
 	return render(request, 'estudios/carga_estudio.html', context)

@@ -3,15 +3,23 @@
 {% block content %}
 </style>
 <main>
-  
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      
+    {% endfor %}
+  {% endif %}
   <div class="row">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         
         <h5 class="card-title">Datos de la simulación</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Médico: {{simulacion.medico.alias}}</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Médico: {{simulacion.medico.apellido}}, {{simulacion.medico.nombre}}</h6>
         <p class="card-text"> <b>Fecha de Pedido</b>: {{simulacion.fecha_simulacion}}</p>
-        <p class="card-text"><b>Comentario del médico</b>: </p>
+        <p class="card-text"><b>Comentario del profesional</b>: </p>
         <p class="card-text"><i>{{simulacion.comentario}}</i></p>
         
       </div>
@@ -26,8 +34,8 @@
         <p class="card-text"><b>Sexo</b>: {{paciente.sexo}}</p>
         <p class="card-text"><b>Edad</b>: {{paciente.edad}}</p>
         <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
-        <p class="card-text"><b>Peso</b>: {{paciente.peso}}</p>
-        <p class="card-text"><b>Altura</b>: {{paciente.altura}}</p>
+        <p class="card-text"><b>Peso</b>: {{paciente.peso}} kg</p>
+        <p class="card-text"><b>Altura</b>: {{paciente.altura}} cm</p>
         
       </div>
     </div>
@@ -69,7 +77,7 @@
         <div style="margin-bottom: 10px;" class="d-flex justify-content-center">
           <div style="margin-bottom: 10px;" class="d-flex justify-content-center">
             <button type="button" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile1').click()">Archivo PDF</button>
-            <input name="archivo" type='file' id="getFile1" style="display:none" accept="application/pdf">
+            <input name="archivo" type='file' id="getFile1" style="display:none" required accept="application/pdf">
           </div>
         </div>
         <p class="card-text"> <b>Notas</b></p>

@@ -53,7 +53,7 @@ class FormDatosCuenta (forms.ModelForm):
 			'apellido' : 'Apellido',
 			'especialidad' : 'Especialidad',
 			'institucion' : 'Institución',
-			'matricula' : 'Matricula',
+			'matricula' : 'Matrícula',
 		}
 		widgets={
 			'nombre': forms.TextInput(attrs={'class':'form-control'}),

@@ -53,8 +53,11 @@ def solicitud_simulacion_view(request):
 	context['listaestudios'] = listaestudios
 	context['solicitudes'] = formulario
 	if request.method == 'POST':
-		print("Es post")
 		idverificar=request.POST['paciente']
+		print(idverificar)
+		if idverificar == 'Desplegar':
+			messages.success(request,("Por favor elija un paciente"))
+			return redirect ('solicitud_simulacion')
 		verificarestudios=listaestudios.all().filter(paciente__id=idverificar)
 		verificarestudios.exists()
 		print(verificarestudios.exists())
@@ -67,7 +70,7 @@ def solicitud_simulacion_view(request):
 				carga.save()
 				return redirect('lista_simulacion')
 		else:
-			messages.success(request,("Por favor elija un usuario con estudios cargados"))
+			messages.success(request,("Por favor elija un paciente con estudios cargados"))
 			return redirect ('solicitud_simulacion')
 	return render (request, 'simulacion/solicitud_simulacion.html',context)
 
@@ -174,6 +177,8 @@ def datos_simulacion_view(request, idSimulacion):
 			carga.formulario = Solicitudes.objects.get(pk=idSimulacion)
 			carga.save()
 			#print(forma.formulario)
+		else:
+			messages.success(request,("Por favor verifique los datos cargados"))
 	#print(paciente[0]) #esto solo me da los valores del __str__(self), pero lo mismo tengo acceso a todo
 	#print(simu[0].aliaspaciente) #YESSSSSSSSSSSSSS ESTO ME DA ACCESO AL DATO ALIASPACIENTE
 	return render(request, 'simulacion/datos_simulacion.html', context)

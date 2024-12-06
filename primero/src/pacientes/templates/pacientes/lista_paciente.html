@@ -38,7 +38,7 @@
           <th class="text-center align-middle" scope="col">Edad</th>
           <th class="text-center align-middle" scope="col">Peso (Kg.)</th>
           <th class="text-center align-middle" scope="col">Altura (Cm.)</th>
-          <th class="text-center align-middle" scope="col">Estudios</th>
+          <th class="text-center align-middle" scope="col">Datos y Estudios</th>
         </tr>
       </thead>
       <tbody>
@@ -52,7 +52,7 @@
           <td class="text-center align-middle">{{paciente.peso}}</td>
           <td class="text-center align-middle">{{paciente.altura}}</td>
           <td class="text-center align-middle">
-            <a href="{% url 'datos_paciente' paciente.id %}">Ver Estudios</a>
+            <a href="{% url 'datos_paciente' paciente.id %}">Ver Más</a>
           </td>
         </tr>
         {% empty %}

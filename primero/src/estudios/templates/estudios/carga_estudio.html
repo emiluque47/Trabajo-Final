@@ -30,6 +30,15 @@
 }
 </style>
 <main class="form-signin w-100 m-auto ">
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  {{ message }}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			
+		{% endfor %}
+	{% endif %}
 	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 
@@ -62,17 +71,17 @@
 		<!-- esto es medico 
 		<input type="hidden" name="medico" placeholder="srqerqer" class="form-control" id="floatingInput" value="{{ user.username }}" required>
 
-		<!-- esto es paciente 
-		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias
+		 esto es paciente 
+		<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden>  obetngo el alias
 		<label>Elija un Paciente</label>
 		<select style="margin-bottom: 10px;" type="text" name="paciente" placeholder="Alias Paciente" class="form-control" id="PacientesAlias"  required>
 			<option>Desplegar</option>
 			{% for paciente in listapacientes %}
-			<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option> <!-- obetngo el id 
+			<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option>  obetngo el id 
 			{% endfor %}
 		</select>
 
-		<!-- esto es tipo de estudio 
+		 esto es tipo de estudio 
 		<label>Elija un Tipo de Estudio</label>
 		<select style="margin-bottom: 10px;" name="tipoEstudio" class="form-control" id="floatingInput" required>
 		  <option value="Biopsia">Biopsia</option>
@@ -80,7 +89,7 @@
 		  <option value="Resonancia Magnetica">Resonancia Magnetica</option>
 		</select>
 		
-		<!-- esto es carga de archivos 
+		 esto es carga de archivos 
 		<label>Cargar PDF </label>
 		<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
 			<div style="margin-bottom: 10px;" class="d-flex justify-content-center">
