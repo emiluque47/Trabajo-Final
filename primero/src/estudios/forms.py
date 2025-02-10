@@ -12,7 +12,6 @@ TIPOS_ESTUDIO = {
 class CargaEstudio(ModelForm):
 	class Meta:
 		model = Estudio
-		#saqué 'medico', ya que lo agrego en el view
 		fields = ('paciente','tipoEstudio','archivo', 'comentario')
 		labels = {
 			'paciente' : 'Seleccione un paciente',
@@ -30,6 +29,5 @@ class CargaEstudio(ModelForm):
 				('Resonancia Magnética', 'Resonancia Magnética'),
 				('Otro' , 'Otro'),
 				]),
-			#'archivo': forms.FileField(),
 			'comentario': forms.Textarea(attrs={'class':'form-control','rows':'3'})
 		}

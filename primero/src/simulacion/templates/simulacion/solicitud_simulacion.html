@@ -14,9 +14,6 @@
 	<form method="POST">
 	{% csrf_token %}	
 		<div class="row p-2">
-			<!-- id del médico 
-			<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user }}" required>
-			-->
 			<!-- Paciente -->
 			<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias -->
 			<div class="card col">
@@ -36,10 +33,6 @@
 			    <h5 class="card-title">Agregar Notas</h5>
 			    <h6 class="card-subtitle mb-2 text-body-secondary">Para tener en cuenta para la simulación</h6>
 			    <textarea name="comentario" id="comentario" rows="4" cols="52"></textarea>
-			    <!--
-			    	
-			    	<input type="text" name="comentario" id="cometario" rows="4" cols="50">
-			    -->
 			    <p></p>
 			  </div>
 			</div>
@@ -90,6 +83,4 @@
 		});
 	</script>
 </div>
-
-
 {% endblock content %}

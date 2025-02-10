@@ -5,10 +5,8 @@ from pacientes.models import Paciente
 class CargaPaciente(ModelForm):
 	class Meta:
 		model = Paciente
-		#saqué 'medico', ya que lo agrego en el view
 		fields = ('alias','sexo','etnia','nacimiento','edad','peso','altura','comentario')
 		labels = {
-			#'medico':'',
 			'alias': 'Ingrese un Alias para el paciente',
 			'sexo': 'Sexo del paciente',
 			'etnia': 'Etnia del paciente',
@@ -19,7 +17,6 @@ class CargaPaciente(ModelForm):
 			'comentario': 'Comentario pertinente al paciente (opcional)'
 		}
 		widgets = {
-			#'medico': forms.Select(attrs={'class':'form-control'}),
 			'alias': forms.TextInput(attrs={'class':'form-control'}),
 			'sexo': forms.TextInput(attrs={'class':'form-control'}),
 			'etnia': forms.TextInput(attrs={'class':'form-control'}),

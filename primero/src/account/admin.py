@@ -12,12 +12,3 @@ class AccountAdmin(UserAdmin):
 	fieldsets=()
 
 admin.site.register(Account, AccountAdmin)
-
-# class DatosCuentaAdmin(admin.ModelAdmin):
-# 	list_display =('nombre','apellido','especialidad', 'is_doctor', 'is_investigador')
-# 	search_fields =['apellido','especialidad']
-# 	filter_horizontal =()
-# 	list_filter=()
-# 	fieldsets=()
-
-# admin.site.register(DatosCuenta, DatosCuentaAdmin)

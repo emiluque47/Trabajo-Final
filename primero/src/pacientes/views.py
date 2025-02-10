@@ -21,7 +21,6 @@ def paciente_carga_view(request):
 			carga= form.save(commit=False)
 			carga.medico = request.user
 			carga.save()
-			#print("Paciente Cargado!")
 			return redirect('carga_estudio')
 	context = {'form':form}
 	return render(request, 'pacientes/carga_paciente.html', context)
@@ -51,7 +50,6 @@ def datos_paciente_view(request, idPaciente):
 	context = {}
 	paciente = Paciente.objects.all().filter(id=idPaciente) #consigo los datos del paciente
 	listaestudios = Estudio.objects.all().filter(paciente__exact=idPaciente)
-	#listaestudios = Estudio.objects.all()
 	context['paciente']= paciente
 	context['listaestudios']= listaestudios
 	return render(request, 'pacientes/datos_paciente.html',context)
@@ -69,13 +67,8 @@ def modificar_datos_paciente_view(request, idPaciente):
 	if form.is_valid():
 		form.save()
 		return redirect('listado_paciente')
-	#paciente = Paciente.objects.all().filter(id=idPaciente) #consigo los datos del paciente
 	context['paciente']= paciente
 	context['form']=form
-	#formulario = CargaPaciente(request.POST, instance=paciente)
-	#if formulario.is_valid():
-		#formulario.save()
-		#return redirect ('pacientes/lista_paciente.html')
 	return render(request, 'pacientes/modificar_datos_paciente.html',context)
 
 #esta "pantalla" borra el paciente idpaciente y reririge a la lista

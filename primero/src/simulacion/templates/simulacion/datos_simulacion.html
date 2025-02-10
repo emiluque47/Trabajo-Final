@@ -82,40 +82,11 @@
         </div>
         <p class="card-text"> <b>Notas</b></p>
         <textarea name="comentario" id="comentario" rows="4" cols="30" required></textarea>
-        <!--
-        <input type="text" name="comentario" id="cometario">
--->
         <p></p> 
         <button class="btn btn-primary" style="background-color: #a370f7" type="submit">Enviar Datos</button> 
       </div>
       </form>
     </div>
-    <!--
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Lista de Estudios</h5>
-        <tbody>
-          {% for estudio in listaestudios %}
-          <tr>
-            <td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
-            <td class="text-center align-middle">
-              <a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
-            </td>
-            <td class="text-center align-middle">
-              <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
-            </td>
-          </tr>
-          {% empty %}
-            <td class="text-center align-middle">Este paciente no tiene estudios cargados.</td>
-            <p></p>
-            <a href="{% url 'carga_estudio' %}" class="card-link">Cargar Estudios</a>
-          {% endfor %}  
-        </tbody>
-      </div>
-    </div>
-  </div>
-  <a class="btn btn-primary w-100 py-2" href="{% url 'listado_paciente' %}">Volver</a>
--->
 </main>
 
 {% endblock content %}

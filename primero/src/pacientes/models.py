@@ -5,7 +5,6 @@ from account.models import Account
 
 class Paciente(models.Model):
 	id 						= models.BigAutoField(primary_key=True, unique=True)
-	#medico					= models.CharField(max_length=30, null=False, blank=False, default="no")
 	medico					= models.ForeignKey(Account, blank=True, null= True, on_delete=models.CASCADE)
 	alias					= models.CharField(max_length=30, null=False, blank=False)
 	sexo					= models.CharField(max_length=10, null=False, blank=False)
@@ -17,5 +16,5 @@ class Paciente(models.Model):
 	comentario				= models.TextField(blank=True)
 	
 	def __str__(self):
-		return self.alias #+' ' + self.sexo + ' ' + self.etnia
+		return self.alias
 

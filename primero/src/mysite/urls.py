@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-""" esto es para el resete de password"""
+""" esto es para el reset de password"""
 from django.contrib.auth import views as auth_views
-""" esto es para las imagenes creo """
+""" esto es para las imagenes """
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -94,7 +94,6 @@ urlpatterns = [
     path('borrar_paciente/<str:idPaciente>/', borrar_paciente_view, name="borrar_paciente"),
     # estudios
     path('estudio_carga/', carga_estudio_view, name="carga_estudio"),
-    #path('lista_estudio/', formulario_lista_estudios_view, name="lista_estudio_1"),
     path('borrar_estudio/<str:idEstudio>/', borrar_estudio_view, name="borrar_estudio"),
     # simulacion
     path('simulacion/', req_simulacion_view, name="formulario_simulacion"),
