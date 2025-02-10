@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-</style>
+
 <main>
   {% if messages %}
     {% for message in messages %}
@@ -36,7 +36,7 @@
         <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
         <p class="card-text"><b>Peso</b>: {{paciente.peso}} kg</p>
         <p class="card-text"><b>Altura</b>: {{paciente.altura}} cm</p>
-        
+        <p class="card-text"><b>Comentario</b>: {{paciente.comentario}}</p>
       </div>
     </div>
 

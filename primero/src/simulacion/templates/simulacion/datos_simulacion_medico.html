@@ -8,7 +8,7 @@
       <div class="card-body">
         
         <h5 class="card-title">Datos de la simulación</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{simulacion.medico.username}}</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{simulacion.medico.apellido}}, {{simulacion.medico.nombre}}</h6>
         <p class="card-text"> <b>Fecha de Pedido</b>: {{simulacion.fecha_simulacion}}</p>
         <p class="card-text"><b>Comentario</b>: </p>
         <p class="card-text"><i>{{simulacion.comentario}}</i></p>
@@ -27,6 +27,7 @@
         <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
         <p class="card-text"><b>Peso</b>: {{paciente.peso}} kg</p>
         <p class="card-text"><b>Altura</b>: {{paciente.altura}} cm</p>
+        <p class="card-text"><b>Comentario</b>: {{paciente.comentario}}</p>
         {% endfor %}
       </div>
     </div>

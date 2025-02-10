@@ -26,7 +26,7 @@
 					<a href="{{respuesta.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
 				</td>
 				<td class="text-center align-middle">
-	          <a class="btn btn-danger w-55" href="{% url 'borrar_respuesta' respuesta.id %}"  onclick="if (!confirm('Are you sure?')) return false;">Eliminar Respuesta</a>
+	          <a class="btn btn-danger w-55" href="{% url 'borrar_respuesta' respuesta.id %}"  onclick="if (!confirm('Desea borrar este elemento?')) return false;">Eliminar Respuesta</a>
 	        </td>
 	  	</tr>
 	  	{% empty %}

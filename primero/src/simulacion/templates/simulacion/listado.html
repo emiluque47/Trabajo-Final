@@ -56,7 +56,7 @@
             <a href="{% url 'datos_simulacion_medico' simulacion.id %}">Ver Detalles</a>
           </td>
           <td class="text-center align-middle">
-            <a class="btn btn-danger w-55" href="{% url 'borrar_solicitud' simulacion.id %}"  onclick="if (!confirm('Are you sure?')) return false;">Eliminar Solicitud</a>
+            <a class="btn btn-danger w-55" href="{% url 'borrar_solicitud' simulacion.id %}"  onclick="if (!confirm('Desea borrar este elemento?')) return false;">Eliminar Solicitud</a>
           </td>
         </tr>
         {% empty %}

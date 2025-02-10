@@ -140,8 +140,8 @@ def list_respuestas_view(request):
 		return redirect("login")
 	context={}
 	print("list_respuestas_view")
-	listarespuesta = Respuesta.objects.all()
-	p = Paginator(listarespuesta,1)
+	listarespuesta = Respuesta.objects.all().order_by('-id')
+	p = Paginator(listarespuesta,6)
 	pagina = request.GET.get('page')
 	respuestas = p.get_page(pagina)
 	context['respuestas'] = respuestas
@@ -177,7 +177,9 @@ def datos_simulacion_view(request, idSimulacion):
 			carga.formulario = Solicitudes.objects.get(pk=idSimulacion)
 			carga.save()
 			#print(forma.formulario)
+			return redirect("lista_respuestas")
 		else:
+			print('no valida')
 			messages.success(request,("Por favor verifique los datos cargados"))
 	#print(paciente[0]) #esto solo me da los valores del __str__(self), pero lo mismo tengo acceso a todo
 	#print(simu[0].aliaspaciente) #YESSSSSSSSSSSSSS ESTO ME DA ACCESO AL DATO ALIASPACIENTE

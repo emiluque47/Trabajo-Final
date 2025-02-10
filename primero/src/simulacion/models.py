@@ -14,7 +14,7 @@ class Solicitudes(models.Model):
 	#aliaspaciente			= models.CharField(max_length=30, null=False, blank=False, default="testing") #esto es el alias del paciente
 	#estudio1				= models.CharField(max_length=30, null=False, blank=False) #esto está guardando el alias de estudio,
 	#idestudio1				= models.CharField(max_length=30, null=False, blank=False, default="30") #esto es el id del estudio
-	comentario				= models.CharField(max_length=30, null=False, blank=False)
+	comentario				= models.CharField(max_length=300, null=False, blank=False)
 	#
 	#estudios				= ArrayField(
 	#	ArrayField( models.IntegerField(verbose_name='estudio', blank=True))
@@ -25,7 +25,7 @@ class Solicitudes(models.Model):
 class Respuesta(models.Model):
 	id 						= models.BigAutoField(primary_key=True, unique=True)
 	formulario				= models.ForeignKey(Solicitudes, blank=True, null= True, on_delete=models.CASCADE)
-	comentario				= models.CharField(max_length=30, null=False, blank=False)
+	comentario				= models.CharField(max_length=300, null=False, blank=False)
 	archivo					= models.FileField(blank=False)
 	def __str__(self):
 		return self.comentario
