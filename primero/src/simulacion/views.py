@@ -22,14 +22,6 @@ def req_simulacion_view(request): #ya no lo uso
 	if request.method == 'POST':
 		print("Es post")
 		formulario = FormSolicitudes(request.POST)
-		#print(formulario.errors) fields = ('medico','paciente', 'aliaspaciente','estudio1', 'idestudio1','comentario')
-		# print("Medico: ",formulario['medico'].value())
-		# print("Paciente: ",formulario['paciente'].value())
-		# print("Aliaspaciente: ",formulario['aliaspaciente'].value())
-		# print("campo estudio1 (el alias de estudio): ",formulario['estudio1'].value())
-		# print("campo idestudio1(el id del estudio): ",formulario['idestudio1'].value())
-		# print("Comentario: ",formulario['comentario'].value())
-		#print(formulario['comentario'].value()) #no borro esta linea porque me sirve para acceder al valor
 		if formulario.is_valid():
 			print("Es valido")
 			formulario.save()
@@ -116,19 +108,15 @@ def datos_simulacion_medico_view(request,idSimulacion):
 		return redirect("login")
 	context={}
 	listaSimulaciones = Solicitudes.objects.all().order_by('-id')
-# 	context['listaSimulaciones'] = listaSimulaciones
 	simu = Solicitudes.objects.get(id=idSimulacion)#obtengo la simulacion
 	idpaciente = simu.paciente.id
 	listaEstudios = Estudio.objects.all().filter(paciente_id=idpaciente) #obtengo los estudio
 	paciente = Paciente.objects.all().filter(id=idpaciente)#obtengo el paciente
 	listaRespuestas = Respuesta.objects.all().filter(formulario__paciente__id=idpaciente)
-# 	rtasimulacion = Respuesta.objects.all().filter(idformulario=idSimulacion) #obtengo la respuesta
-# 	print(rtasimulacion)
 	context['listaRespuestas'] = listaRespuestas
 	context['simulacion'] = simu
 	context['listaEstudios'] = listaEstudios
 	context['paciente'] = paciente
-# 	context['respuesta'] = rtasimulacion
 	return render(request, 'simulacion/datos_simulacion_medico.html', context)
 
 #esta pantalla muestra al investigador todas las respuestas enviadas
@@ -155,11 +143,8 @@ def datos_simulacion_view(request, idSimulacion):
 		return redirect("login")
 	context={}
 	form= FormRespuesta()
-	#listaSimulaciones = Solicitudes.objects.all().order_by('-id')
-	#context['listaSimulaciones'] = listaSimulaciones
 	solic = Solicitudes.objects.get(pk=idSimulacion)#obtengo la simulacion
 	idpaciente = solic.paciente.id
-	#print(solic.paciente.id)
 	listaEstudios = Estudio.objects.all().filter(paciente_id=idpaciente)
 	paciente = Paciente.objects.get(id=idpaciente)#obtengo el paciente
 	context['form']=form
@@ -167,22 +152,17 @@ def datos_simulacion_view(request, idSimulacion):
 	context['listaEstudios'] = listaEstudios
 	context['paciente'] = paciente
 	if request.method == 'POST':
-		#print("es un post")
 		data = request.POST
 		archivo2 = request.FILES.get('archivo')
-		#print("data: ", data)
 		forma = FormRespuesta(request.POST, request.FILES)
 		if forma.is_valid():
 			carga = forma.save(commit=False)
 			carga.formulario = Solicitudes.objects.get(pk=idSimulacion)
 			carga.save()
-			#print(forma.formulario)
 			return redirect("lista_respuestas")
 		else:
 			print('no valida')
 			messages.success(request,("Por favor verifique los datos cargados"))
-	#print(paciente[0]) #esto solo me da los valores del __str__(self), pero lo mismo tengo acceso a todo
-	#print(simu[0].aliaspaciente) #YESSSSSSSSSSSSSS ESTO ME DA ACCESO AL DATO ALIASPACIENTE
 	return render(request, 'simulacion/datos_simulacion.html', context)
 
 #esto se encarga de borrar la solicitud
