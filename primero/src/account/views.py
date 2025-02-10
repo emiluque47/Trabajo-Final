@@ -78,8 +78,6 @@ def actualizar_datos_cuenta_view(request):
 	form = FormDatosCuenta()
 	form = FormDatosCuenta(request.POST or None, instance=cuenta)
 	if form.is_valid():
-		#carga= form.save(commit=False)
-		#carga.cuenta = user
 		form.save()
 		return redirect('home')
 	context['form'] = form

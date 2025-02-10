@@ -20,10 +20,8 @@ def req_simulacion_view(request): #ya no lo uso
 	context['listapacientes']=listapacientes
 	context['listaestudios']=listaestudios
 	if request.method == 'POST':
-		print("Es post")
 		formulario = FormSolicitudes(request.POST)
 		if formulario.is_valid():
-			print("Es valido")
 			formulario.save()
 			return redirect('listado_paciente')
 	return render(request, 'simulacion/formulario.html', context)
@@ -46,17 +44,14 @@ def solicitud_simulacion_view(request):
 	context['solicitudes'] = formulario
 	if request.method == 'POST':
 		idverificar=request.POST['paciente']
-		print(idverificar)
 		if idverificar == 'Desplegar':
 			messages.success(request,("Por favor elija un paciente"))
 			return redirect ('solicitud_simulacion')
 		verificarestudios=listaestudios.all().filter(paciente__id=idverificar)
 		verificarestudios.exists()
-		print(verificarestudios.exists())
 		formulario = FormSolicitudes(request.POST)
 		if verificarestudios.exists():
 			if formulario.is_valid():
-				print("Es valid")
 				carga = formulario.save(commit=False)
 				carga.medico= request.user
 				carga.save()
@@ -74,7 +69,6 @@ def list_simulacion_view(request):
 	if not request.user.is_doctor:
 		return redirect("login")
 	context={}
-	print("list_simulacion_view")
 	listaSimulaciones = Solicitudes.objects.all().filter(medico__username=request.user.username).order_by('-id')
 	p = Paginator(listaSimulaciones,2)
 	pagina = request.GET.get('page')
@@ -91,7 +85,6 @@ def listado_solicitudes_view(request):
 	if not request.user.is_investigador:
 		return redirect("login")
 	context={}
-	print("listado_solicitudes_view")
 	listaSimulaciones = Solicitudes.objects.all().order_by('-id')
 	p = Paginator(listaSimulaciones,2)
 	pagina = request.GET.get('page')
@@ -127,7 +120,6 @@ def list_respuestas_view(request):
 	if not request.user.is_investigador:
 		return redirect("login")
 	context={}
-	print("list_respuestas_view")
 	listarespuesta = Respuesta.objects.all().order_by('-id')
 	p = Paginator(listarespuesta,6)
 	pagina = request.GET.get('page')
