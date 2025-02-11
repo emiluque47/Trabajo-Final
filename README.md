@@ -26,14 +26,26 @@ Para esta herramienta se utilizaron las siguientes librerías:
 
 Dependiendo del ambiente utilizadon para la instalación se deberán utilizar ciertas versiones de estas herramientas, pero en dichos casos se espcecificará la versión utilizada.<br>
 ## Utilizando Conda
-Para instalar estas herramientas en el ambiente Conda, primero se deberá iniciar un ambiente virtual. Para esto se deberá utilizar la siguiente línea de comando
+Para instalar estas herramientas en el ambiente Conda, primero se deberá iniciar un ambiente virtual. Para esto se deberá iniciar Powershell desde el Anaconda Navigator y navegar hasta la carpeta del proyecto. Una vez ahí, se debe utilizar la siguiente línea de comando
 ```
-conda create -n portal1 python=3.12.3 pillow=11.0.0 psycopg2=2.9.9 sqlparse=0.5.2 tzdata=2024.a django=5.1.3
+conda create -n portal1 python=3.12.3 pillow=11.0.0 psycopg2=2.9.9 sqlparse=0.5.2 tzdata django=5.1.3
 ```
-Debido a que el ambiente de Conda no cuenta con la herramienta Django-auto-logout, se deberá intalar la misma utilizando pip. Para esto, se debe utilizar el siguiente comando
+Debido a que el ambiente de Conda no cuenta con la herramienta Django-auto-logout, se deberá intalar la misma utilizando pip. Para esto, se deben seguir los siguientes pasos:
+
+1. Iniciar el ambiente virtual utilizando el siguiente comando
+   ```
+   conda activate portal1
+   ```
+2. Una vez iniciado el ambiente virtual se deberá instalar la herramienta con el siguiente commando
+   ```
+   pip install auto-logout
+   ```
+Con estas herramientas se finalizaron los preparativos para iniciar el servidor del prototipo. Ahora, se deberá navegar hasta el directorio src en la ventana Powershell y utilizar el siguiente comando
+
 ```
-pip install auto-logout
+python manage.py runserver
 ```
+Con estos preparativos listos, el prototipo puede ser accedido desde un navegador web accediendo a 127.0.0.1:8000
 
 ## Utilizando la pantalla de comando de Windows
 * Python (versión 3.12.3)
