@@ -66,3 +66,4 @@ Este comando estará instalando las siguientes versiones de las herramientas
 * Psycopg2 (versión 2.9.10)
 * Sqlparse (versión 0.5.1)
 * Tzdata (versión 2024.1)
+  
