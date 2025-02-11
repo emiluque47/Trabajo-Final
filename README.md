@@ -48,6 +48,16 @@ python manage.py runserver
 Con estos preparativos listos, el prototipo puede ser accedido desde un navegador web accediendo a 127.0.0.1:8000
 
 ## Utilizando la pantalla de comando de Windows
+Para la pantalla de comando de windows se utilizarán las mismas herramientas, pero se deberán instalar utilizando el comando pip. Para esto se deberá navegar hasta la carpeta Scripts del repositorio y abrir la pantalla de commando de windows.<br>
+Una vez que esté abierta la pantalla de commando se deberá abrir el archivo de activación del ambiente virtual con el siguiente comando
+```
+activate
+```
+Una vez que se haya activado el ambiente virtual, se debe navegar hasta la carpeta src y utilizar el siguiente comando
+```
+pip install -r requirement.txt
+```
+Este comando estará instalando las siguientes versiones de las herramientas
 * Python (versión 3.12.3)
 * Django (versión 4.2.11)
 * Asgiref (versión 3.8.1)
@@ -56,7 +66,3 @@ Con estos preparativos listos, el prototipo puede ser accedido desde un navegado
 * Psycopg2 (versión 2.9.10)
 * Sqlparse (versión 0.5.1)
 * Tzdata (versión 2024.1)
-
-```
-then the command
-```
