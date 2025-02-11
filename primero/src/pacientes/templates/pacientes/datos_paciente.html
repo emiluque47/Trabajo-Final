@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="select"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        {% for paciente in paciente %}
+        <h5 class="card-title">Datos del paciente</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{paciente.alias}}</h6>
+        <p class="card-text"><b>Etnia</b>: {{paciente.etnia}}</p>
+        <p class="card-text"><b>Sexo</b>: {{paciente.sexo}}</p>
+        <p class="card-text"><b>Edad</b>: {{paciente.edad}}</p>
+        <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
+        <p class="card-text"><b>Peso (kg)</b>: {{paciente.peso}}</p>
+        <p class="card-text"><b>Altura(cm)</b>: {{paciente.altura}}</p>
+        <p class="card-text"><b>Comentario</b>:<br> <i>{{paciente.comentario}}</i></p>
+        <a href="{% url 'modificar_datos_paciente' paciente.id %}" class="card-link ">Modificar datos</a>
+        <p></p>
+        <a class="btn btn-danger w-100 py-2" href="{% url 'borrar_paciente' paciente.id %}" class="card-link" onclick="if (!confirm('Desea borrar este elemento?')) return false;">Eliminar Paciente</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Lista de Estudios</h5>
+        <tbody>
+          {% for estudio in listaestudios %}
+          <tr>
+            <td class="text-center align-middle"><b>Tipo de estudio</b>: {{estudio.tipoEstudio}}</td>
+            <br>
+            <td class="text-center align-middle">
+              <b>Archivo</b>:
+              <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+            </td>
+            <br>
+            <td class="text-center align-middle"><b>Comentario</b>: {{estudio.comentario}}</td>
+            <br>
+            <td class="align-middle">
+              <a class="btn btn-danger " href="{% url 'borrar_estudio' estudio.id %}" class="card-link" onclick="if (!confirm('Desea borrar este elemento?')) return false;">Eliminar</a>
+            </td>
+          </tr>
+          <hr>
+          {% empty %}
+            <td class="text-center align-middle">Este paciente no tiene estudios cargados.</td>
+            <p></p>
+            <a  href="{% url 'carga_estudio' %}" class="card-link">Cargar Estudios</a>
+            <hr>
+          {% endfor %}  
+        </tbody>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary w-100 py-2" style="background-color: #a370f7" href="{% url 'listado_paciente' %}">Volver</a>
+</main>
+
+{% endblock content %}

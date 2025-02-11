@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form-signin w-100 m-auto">
+	</style>
+	<div class="table-responsive-xl small ">
+		<table class="table table-striped table-hover">
+			<thead>
+	      <tr>
+	        <th scope="col">Id</th>
+	        <th scope="col">Medico</th>
+	        <th scope="col">Paciente</th>
+	        <th scope="col">Estudio</th>
+	        <th scope="col">Imagen</th>
+	        <th scope="col">PDF</th>
+	        <th scope="col">Más</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	{% for estudio in listaestudios %}
+	    	<tr>
+					<td class="text-center align-middle">{{estudio.id}}</td>
+					<td class="text-center align-middle">{{estudio.medico}}</td>
+					<td class="text-center align-middle">{{estudio.paciente}}</td>
+					<td class="text-center align-middle">{{estudio.tipoEstudio}}</td>
+					<td class="text-center align-middle">
+						<a href="{{estudio.imagen.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+					</td>
+					<td class="text-center align-middle">
+						<a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+					</td>
+					<td class="text-center align-middle">
+						<a href="#">Más</a>
+					</td>
+	    	</tr>
+	    	{% endfor %}
+	    </tbody>
+		</table>
+</main>
+
+{% endblock content %}

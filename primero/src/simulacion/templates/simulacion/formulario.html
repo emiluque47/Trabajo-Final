@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+.textarea{
+    resize: vertical;
+    width: 90%;
+}
+</style>
+<main class="container ">
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% end for %}
+	{% end if %}
+	<form method="POST">
+		{% csrf_token %}
+		<div class="col">
+			<div class="row p-2">
+				<!-- id del médico -->
+				<input type="hidden" name="medico" placeholder="Alias" class="form-control" id="floatingInput" value="{{ request.user.username }}" required>
+
+				<!-- Paciente -->
+				<input type="text" name="aliaspaciente" id="numeroId" value="estoeselid" readonly hidden> <!-- obetngo el alias -->
+				<div class="card col">
+				  <div class="card-body">
+				    <h5 class="card-title" >Seleccionar Paciente</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">Elija un paciente</h6>
+				    <select style="margin-bottom: 10px;" name="paciente" class="form-control" id="PacientesAlias" required readonly>
+				    		<option>Desplegar</option>
+				    	{% for paciente in listapacientes %}
+				      	<option value="{{paciente.id}}" id="{{paciente.id}}" placeholder="{{paciente.alias}}">{{paciente.alias}}</option>
+				      {% endfor %}
+				    </select>
+				  </div>
+				</div>
+
+				<!-- Estudios -->
+				<div class="card col-auto">
+				  <div class="card-body ">
+				    <h5 class="card-title">Estudios Anexados</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">
+				    Por favor verifique los estudios antes de enviarlos.
+				  	</h6>
+				    <fieldset id="Radio"> <!-- esto es para agregar el event listener -->
+				      {% for estudio in listaestudios%}
+				      <div>
+				        <input type="text" name="estudio1" readonly id="{{estudio.id}}" hidden required> <!-- obetngo el id del est -->
+				        <input class="checkbox" type="checkbox" value="{{estudio.id}}" placeholder="{{estudio.tipoEstudio}}"  name="idestudio1" unchecked/>
+				        <label for="{{estudio.tipoEstudio}}">{{estudio.tipoEstudio}} - {{estudio.aliaspaciente}}</label>
+				      </div>
+				      {% endfor %}
+				    </fieldset>
+				    
+				  </div>
+				</div>
+
+				<!-- Comentario -->
+				<div class="card col-auto">
+				  <div class="card-body">
+				    <h5 class="card-title">Agregar Notas</h5>
+				    <h6 class="card-subtitle mb-2 text-body-secondary">Para tener en cuenta para la simulación</h6>
+				    <textarea name="comentario" id="comentario" rows="4" cols="35"></textarea>
+				    <p></p>
+				  </div>
+				</div>		
+			</div>
+			<div class="row justify-content-center align-items-center align-self-center">
+				<button class="btn btn-primary" type="submit">Enviar Datos</button>	
+			</div>
+		</div>	
+	</form>
+	<script type="text/javascript">
+		const inputEstudios = document.getElementById("Radio");
+		const searchInput = document.getElementById("PacientesAlias");
+		const rows3 = document.querySelectorAll('fieldset div');
+		//el listener para el juego del alias
+		inputEstudios.addEventListener("change", function (event){
+			const elid = event.target.value; //me devuelve el valor del campo, que representa el id del estudio
+			const eltipo = event.target.placeholder; //me devuelve el tipo del estudio (almacenado en el placeholder)
+			document.getElementById(elid).setAttribute("value",eltipo); //asigno el id del estudio en el input idestudio1
+			console.log(document.getElementById(elid).value);
+		})
+		//el listener para esconder elementos
+		searchInput.addEventListener("change", function (event){
+			const q = event.target.value.toLowerCase(); //obentgo la opción seleccionada (el alias)
+			const e = document.getElementById(q).getAttribute("placeholder"); //obtengo el id del paciente
+			document.getElementById("numeroId").setAttribute('value',e); // asigno ese id al campo numeroId
+			const le = e.toLowerCase(); //pongo en minúsculas el alias
+			const checks = document.getElementsByName("idestudio1");
+			const cantidadchecks = checks.length;
+			//esconde el div
+			rows3.forEach((row3)=>{ //por cada checkbox
+				if(row3.textContent.toLowerCase().includes(le)){ //si es el paciente dejo el style como está
+					row3.style.display = "";
+				} else { //si NO es el paciente escondo los elementos y los uncheck
+					for (var i = 0; i < cantidadchecks;  i++) {
+						checks[i].checked = false;
+					};
+					(row3.style.display = "none");
+				}
+			});
+		});
+	</script>
+</main>
+
+{% endblock content %}

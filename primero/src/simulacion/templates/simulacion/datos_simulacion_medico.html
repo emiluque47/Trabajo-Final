@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+</style>
+<main>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        
+        <h5 class="card-title">Datos de la simulación</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{simulacion.medico.apellido}}, {{simulacion.medico.nombre}}</h6>
+        <p class="card-text"> <b>Fecha de Pedido</b>: {{simulacion.fecha_simulacion}}</p>
+        <p class="card-text"><b>Comentario</b>: </p>
+        <p class="card-text"><i>{{simulacion.comentario}}</i></p>
+        
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        {% for paciente in paciente %}
+        <h5 class="card-title">Datos del paciente</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{paciente.alias}}</h6>
+        <p class="card-text"> <b>Etnia</b>: {{paciente.etnia}}</p>
+        <p class="card-text"><b>Sexo</b>: {{paciente.sexo}}</p>
+        <p class="card-text"><b>Edad</b>: {{paciente.edad}}</p>
+        <p class="card-text"><b>Fecha de Nacimiento</b>: {{paciente.nacimiento}}</p>
+        <p class="card-text"><b>Peso</b>: {{paciente.peso}} kg</p>
+        <p class="card-text"><b>Altura</b>: {{paciente.altura}} cm</p>
+        <p class="card-text"><b>Comentario</b>: {{paciente.comentario}}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Estudios Anexados</h5>
+        {% for estudio in listaEstudios %}
+        <tr>
+          <td class="text-center align-middle"><b>Tipo de estudio</b>: {{estudio.tipoEstudio}}</td>
+          <br>
+          <td class="text-center align-middle">
+            <b>Archivo</b>:
+            <a href="{{estudio.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+          </td>
+          <br>
+          <td class="text-center align-middle"><b>Comentario</b>: {{estudio.comentario}}</td>
+          <br>
+        </tr>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card col" >
+    <div class="card-body">
+      <h5 class="card-title">Resultados de Simluación</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">En base a los datos recibidos</h6>
+      {% for respuesta in listaRespuestas %}
+        <p class="card-text">{{respuesta.comentario}}</p>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Se anexa el siguiente archivo: </h6>
+        <a href="{{respuesta.archivo.url}}" target="_blank" rel="noopener noreferrer">Link</a>
+      {% empty %}
+        <p class="card-text">Todavía no se recibió ningúna respuesta para esta solicitud de simulación</p>
+      {% endfor %}
+      <hr>
+    </div>
+  </div>
+  </div>
+</main>
+
+{% endblock content %}

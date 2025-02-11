@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- lo del feature -->
+<div class="row featurette p-5 d-flex justify-content-center align-items-center align-self-center">
+  <div class="col-md-7 order-md-1 text-left">
+  	<h2 class="featurette-heading fw-normal lh-1">Enrique Lomba</h2>
+    <p class="lead text-left px-4 ">
+    Enrique mantiene una colaboración sostenida desde hace muchos años con nuestro grupo.<br>
+    En el último tiempo, dicha colaboración se ha formalizado en el proyecto conjunto “CONIN: Effects on confinement on inhomogeneous systems” (H2020-MSCA-RISE-2016), financiado por la Comisión Europea y refrendado por la Universidad Nacional de La Plata.
+  </p>
+  <p><a class="btn btn-secondary" style="background-color: #a370f7" href="{% url 'team_main' %}">&laquo; Volver</a></p>
+  </div>
+  <div class="col-md-5 order-md-2 ">
+    <img class="featurette-image img-fluid" width="500" height="500" src="{% static 'media/m2_large.jpg' %}">
+  </div>
+</div>
+<!-- fin del feature -->
+{% endblock content %}

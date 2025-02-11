@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form {
+  max-width: 330px;
+  padding: 1rem;
+}
+.form .form-floating:focus-within {
+  z-index: 2;
+}
+.form input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main class="form w-100 m-auto">
+	<h1 class="h3 mb-3 fw-normal">Modificar Datos del Paciente</h1>
+	<form method="POST">
+		{% csrf_token %}
+
+		{{ form.as_p }}
+		<button class="btn btn-primary w-100 py-2" style="background-color: #a370f7" type="submit">Actualizar Datos</button>
+	</form>
+	<p><a class="btn btn-secondary " href="{% url 'listado_paciente' %}"	style="background-color: #a370f7; margin-top: 10px;">&laquo; Volver</a></p>
+</main>
+
+{% endblock content %}

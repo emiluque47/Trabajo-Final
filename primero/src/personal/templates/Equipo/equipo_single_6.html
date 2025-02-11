@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- lo del feature -->
+<div class="row featurette p-5 d-flex justify-content-center align-items-center align-self-center">
+  <div class="col-md-7 order-md-1 text-left">
+  	<h2 class="featurette-heading fw-normal lh-1">Luciana M. Luque</h2>
+    <p class="lead text-left px-4 ">
+    Mi línea de investigación es el modelado de inmunoterapias aplicadas a microambiente tumorales. Así, a través de un abordaje interdisciplinario, utilizo modelos matemáticos/computacionales y, cuando es posible, datos experimentales, para estudiar comportamientos emergentes de dichos sistemas biológicos.<br>
+    Tengo especial interés en estudiar fenómenos estocásticos involucrados en el movimiento celular, la diferenciación y la formación de patrones espacio-temporales.<br>
+  </p>
+  <p><a class="btn btn-secondary" style="background-color: #a370f7" href="{% url 'team_main' %}">&laquo; Volver</a></p>
+  </div>
+  <div class="col-md-5 order-md-2 ">
+    <img class="featurette-image img-fluid" width="500" height="500" src="{% static 'media/m6_large.jpg' %}">
+  </div>
+</div>
+<!-- fin del feature -->
+{% endblock content %}

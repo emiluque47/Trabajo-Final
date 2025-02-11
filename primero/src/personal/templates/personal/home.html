@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- lo del feature -->
+<img style="height: 100%; width: 100%;" src="{% static 'media/photo_ai.jpg' %}" alt="ai slop">
+<div class="centered" style="top: 35%; left:15%; position: absolute;">
+  <div class="row">
+    <div class="card"style="width: 40rem;">
+      <div class="card-header">
+        Virtual Lab
+      </div>
+      <div class="card-body" >
+          <p>
+            Presentamos un modelo basado en agentes que captura las interacciones entre distintos tipos de células, como así también con el microambiente, el cual permite analizar el comportamiento global emergente durante la regeneración de tejidos y el desarrollo de tumores. Usando este modelo, podemos reproducir la dinámica temporal de las células sanas y las células cancerosas, así como la evolución de sus distribuciones espaciales y sus respuestas a distintos tipos de terapias. Al ajustar el sistema con las características de los sistemas biológicos que se desean estudiar, nuestro modelo permite reproducir una variedad de patrones espaciales de regeneración de tejidos y crecimiento tumoral, que se asemejan a los que se encuentran en las imágenes clínicas o en las biopsias.<br>
+            Al incorporar los datos clínicos específicos del paciente, el modelo permite simular distintas estrategias de dosimetría, con el fin de informar la toma de decisiones del personal clínico.
+          </p>
+        </blockquote>
+      </div>
+    </div>
+    
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid" style="width:97%" width="500" height="500" src="{% static 'media/photo_card.jpg' %}">
+    </div>
+  </div>
+</div>
+{% endblock content %}
