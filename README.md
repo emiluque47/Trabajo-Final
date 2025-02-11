@@ -7,12 +7,14 @@ En este documento se estará dando una breve descripción del proyecto, sus cara
 + Solicitud de simulación
 + Manejo de solicitudes de simulación
 + Carga de resultados de simulación
-+ Manejo de resultados de simulación
-Si bien una expliacación sobre el manejo de esta herramienta está fuera del alcance de este documento
++ Manejo de resultados de simulación <br>
+
+Si bien una explicación sobre el manejo de esta herramienta está fuera del alcance de este documento
+
 ## Cómo instalar
-En esta sección se estarán explicando los pasos necesarios para descargar y correr el proyecto en un ambiente local.
-Para eso se dividirá en dos secciones, la primera explicará la instalación de las herramientas usando el ambiente Anaconda, y la segunda será utilizando la pantalla de comando de windows./
-Para esta herramienta se utilizaron las siguientes liberías:
+En esta sección se estarán explicando los pasos necesarios para descargar y correr el proyecto en un ambiente local.<br>
+Para eso se dividirá en dos secciones, la primera explicará la instalación de las herramientas usando el ambiente Anaconda, y la segunda será utilizando la pantalla de comando de windows.
+Para esta herramienta se utilizaron las siguientes librerías:
 * Python
 * Django
 * Asgiref 
@@ -20,12 +22,17 @@ Para esta herramienta se utilizaron las siguientes liberías:
 * Pillow 
 * Psycopg2
 * Sqlparse
-* Tzdata
-Dependiendo del ambiente utilizadon para la instalación se deberán utilizar ciertas versiones de estas herramientas, pero en dichos casos se espcecificará la versión utilizada./
-## Utilizando Anaconda
+* Tzdata<br>
 
+Dependiendo del ambiente utilizadon para la instalación se deberán utilizar ciertas versiones de estas herramientas, pero en dichos casos se espcecificará la versión utilizada.<br>
+## Utilizando Conda
+Para instalar estas herramientas en el ambiente Conda, primero se deberá iniciar un ambiente virtual. Para esto se deberá utilizar la siguiente línea de comando
 ```
-then the command
+conda create -n portal1 python=3.12.3 pillow=11.0.0 psycopg2=2.9.9 sqlparse=0.5.2 tzdata=2024.a django=5.1.3
+```
+Debido a que el ambiente de Conda no cuenta con la herramienta Django-auto-logout, se deberá intalar la misma utilizando pip. Para esto, se debe utilizar el siguiente comando
+```
+pip install auto-logout
 ```
 
 ## Utilizando la pantalla de comando de Windows
