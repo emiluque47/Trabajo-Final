@@ -1,5 +1,5 @@
 # Prototipo de Portal Web
-## Introduction
+## Introducción
 En este documento se estará dando una breve descripción del proyecto, sus características y modo de instalación. Este proyecto se encargó de desarrollar el prototipo de una plataforma web que tenga las siguientes funcionalidades:<br>
 + Carga de datos de pacientes
 + Manejo de datos de pacientes
