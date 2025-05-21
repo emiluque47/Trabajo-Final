@@ -35,6 +35,7 @@
 	  		<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="/admin">Admin</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'register' %}">Register</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'account' %}">Account</a>
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'ley_listado' %}">Formularios</a>
 	    {% elif request.user.is_doctor %} <!-- es doctor? -->
 	    <div class="dropdown">
 	      <button class="btn text-black dropdown-toggle me-3 py-2" style="background-color: #e0cffc;"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,12 +58,14 @@
 	    {% endif %}
 	  	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'home' %}">Home</a>
 	  	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'team_main' %}">Equipo</a>
+	  	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'ley_datos' %}">Uso de Datos</a>
 			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'contacto' %}">Contacto</a>
 			<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'datos_cuenta' %}">Datos Personales</a>
 		  <a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'logout' %}">Logout</a>
     {% else %} <!-- si no está autenticado, muestro eso -->
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'home' %}">Home</a>
 	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'team_main' %}">Equipo</a>
+	    	<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'ley_datos' %}">Uso de Datos</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'contacto' %}">Contacto</a>
 				<a class="me-3 py-2 link-body-emphasis text-decoration-none text-black fw-bold" href="{% url 'login' %}">Login</a>
     {% endif %}

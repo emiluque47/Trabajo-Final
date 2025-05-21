@@ -23,6 +23,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 """mis views"""
+from ley.views import(
+    ley_datos_view,
+    ley_datos_formulario_view,
+    listado_formulario_view,
+    datos_formulario_view,
+    )
 from personal.views import(
     home_screen_view,
     team_main_view,
@@ -78,6 +84,10 @@ urlpatterns = [
     path('account/', account_view, name="account"),
     path('contacto/', contacto_view, name="contacto"),
     path('datos_cuenta/', actualizar_datos_cuenta_view, name="datos_cuenta"),
+    path('ley_datos/', ley_datos_view, name="ley_datos"),
+    path('ley_datos/formulario', ley_datos_formulario_view, name="ley_form"),
+    path('ley_datos/lista_forms', listado_formulario_view, name="ley_listado"),
+    path('ley_datos/datos_form/<str:idFormulario>/', datos_formulario_view, name="datos_formulario"),
     # equipo
     path('team_main/', team_main_view, name="team_main"),
     path('team_single/', team_single_view, name="team_single"),

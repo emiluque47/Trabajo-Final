@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-6 d-flex justify-content-center align-items-center align-self-center text-black fw-bold">
+			<form method="POST">
+			  {% csrf_token %}
+			  {{ form }}
+			  <br>
+			  <button class="btn btn-primary w-100 py-2" style="background-color: #a370f7"  type="submit">Enviar</button>
+			</form>
+		</div>
+		<div class="col-6 d-flex justify-content-center align-items-center align-self-center text-black fw-bold">
+			Es nuestro compromiso respetar la privacidad de las persona involucradas en este proyecto de investigación.<br>
+			Al proporcionar tus datos verificaremos nuestra base datos y eliminaremos toda la información pertinente.<br>
+		</div>
+	</div>
+	<br>
+	<br>
+</div>
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+
+</style>
+<div class="row">
+  <div class="row">
+    <div class="card col" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Listado de Formularios</h5>
+      <p class="card-text">A continuación se presenta una lista de formularios pertinentes a la protección de datos.</p>
+    </div>
+  </div>
+    <table class="table table-striped table-bordered table-sm table-hover" >
+      <thead class="table-info" >
+        <tr>
+          <th class="text-center align-middle" scope="col">Nombre</th>
+          <th class="text-center align-middle" scope="col">Fecha Nacimiento</th>
+          <th class="text-center align-middle" scope="col">Correo electrónico</th>
+          <th class="text-center align-middle" scope="col">Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in listaforms %}
+        <tr>
+          <td class="text-center align-middle">{{form.apellido}} , {{form.nombre}}</td>
+          <td class="text-center align-middle">{{form.nacimiento}}</td>
+          <td class="text-center align-middle">{{form.correo}}</td>
+          <td class="text-center align-middle">
+            <a href="{% url 'datos_formulario' form.id %}">Ver Más</a>
+          </td>
+        </tr>
+        {% empty %}
+          <td colspan="8" class="text-center align-middle">Actualmente no hay formularios cargados.</td>
+          
+        {% endfor %}
+      </tbody>
+    </table>
+   </div>
+   <div class="col pagination justify-content-center">
+    {% if listaforms.has_previous %}
+      <a class="page-link" href="?page=1">&laquo &laquo</a>
+      <a class="page-link" href="?page={{listaforms.previous_page_number}}">{{listaforms.previous_page_number}}</a>
+    {% endif %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link disabled" href="#">{{ listaforms.number }}</a>
+      </li>
+    {% if listaforms.has_next %}
+      <a class="page-link" href="?page={{listaforms.next_page_number}}">{{listaforms.next_page_number}}</a>
+      <a class="page-link" href="?page={{listaforms.paginator.num_pages}}">&raquo &raquo</a>
+    {% endif %}
+    <br>
+   </div>   
+</div>
+{% endblock content %}

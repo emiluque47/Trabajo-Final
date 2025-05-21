@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+	<div class="row">
+		<p style="text-align: center;" class="col d-flex justify-content-center align-items-center align-self-center text-black fw-bold">
+		Es fundamental que comprendan que cuando una persona se conecta a una red libre de Internet, utiliza una aplicación en dispositivos móviles, comparte su geolocalización o realiza una compra a través de billeteras virtuales entrega parte de su información personal. Al respecto es esencial entender que los datos de una persona son únicos y muy valiosos.<br>
+		<br>
+		Incluso, en la actualidad, los datos también se infieren, lo que permite predecir conductas, gustos y preferencias de consumidores a partir del procesamiento tecnológico de información.<br>
+		<br>
+		Respecto a los responsables de tratamiento, el proyecto de la AAIP refuerza el deber de informar sobre el tratamiento de datos de forma simple, clara y accesible, en línea con las características físicas, perceptivas, sensoriales, intelectuales y mentales de los usuarios.<br>
+		</p>
+		<p class="col d-flex justify-content-center align-items-center align-self-center">
+		<img class="featurette-image img-fluid" width="600" height="600" src="{% static 'media/lock.jpg' %}">
+		</p>
+	</div>
+	<br><br>
+	<div class="row">
+		<p style="text-align: center;" class="col d-flex justify-content-center align-items-center align-self-center text-black fw-bold">
+		¡Creés que tu información está siendo usada sin tu consentimeinto?<br> Comunícate con nosotros<br>
+		</p>		
+	</div>
+	<div class="row d-flex justify-content-center">
+		<a class="btn col-2 btn-primary text-black me-3 py-2 text-black fw-bold" href="{% url 'ley_form' %}" style="background-color: #A370F7;">Formulario</a>
+	</div>
+</div>
+
+{% endblock content %}

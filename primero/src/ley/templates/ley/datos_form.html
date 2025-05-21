@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="select"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.h3{
+	text-align: center;
+}
+</style>
+<main>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        {% for formulario in formulario %}
+        <h5 class="card-title">Datos del formulario</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{formulario.apellido}}, {{formulario.nombre}}</h6>
+        <p class="card-text"><b>Fecha de Nacimiento</b>: {{formulario.nacimiento}}</p>
+        <p class="card-text"><b>Correo</b>: {{formulario.correo}}</p>
+        <p class="card-text"><b>Comentario</b>:<br> <i>{{formulario.comentario}}</i></p>
+        <p></p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary w-100 py-2" style="background-color: #a370f7" href="{% url 'ley_listado' %}">Volver</a>
+</main>
+
+{% endblock content %}
